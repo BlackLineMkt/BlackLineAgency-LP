@@ -13,24 +13,6 @@ const testimonials = [
   },
 ];
 
-function Stars() {
-  return (
-    <div className="flex items-center gap-1 text-gold">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="h-4 w-4"
-        >
-          <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 export function Testimonials() {
   return (
     <section className="relative py-24 md:py-32">
@@ -53,8 +35,7 @@ export function Testimonials() {
               className="reveal relative flex flex-col rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <Stars />
-              <div className="mt-5 font-display text-lg font-semibold leading-snug text-gradient-gold">
+              <div className="font-display text-lg font-semibold leading-snug text-gradient-gold">
                 {t.highlight}
               </div>
               <p className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground">

@@ -22,12 +22,12 @@ const faqs = [
     a: "Porque a Black Line nasceu dentro do nicho. Não aplicamos fórmula genérica — construímos estratégia pra estúdio de tatuagem.",
   },
   {
-    q: "Funciona para estúdio novo, sem seguidores?",
-    a: "Sim. Nossa metodologia foi construída para funcionar do zero. Trabalhamos tráfego pago e posicionamento orgânico simultaneamente, então você não precisa de audiência prévia para começar a lotar a agenda.",
+    q: "Vocês têm contrato de fidelidade?",
+    a: "Não. Trabalhamos sem fidelidade — você pode cancelar quando quiser. Mas aviso: a maioria não quer.",
   },
   {
-    q: "Preciso saber de marketing para usar a plataforma?",
-    a: "Não. A gente cuida de tudo — estratégia, criação, tráfego e CRM. Você só precisa tatuar. Nosso ecossistema foi feito para tatuadores, não para marqueteiros.",
+    q: "Preciso entender de marketing para trabalhar com vocês?",
+    a: "Não. Você entende do seu estúdio e da sua arte — a gente cuida do resto. Nossa função é tirar esse peso das suas costas.",
   },
 ];
 
