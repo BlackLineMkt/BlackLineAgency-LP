@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "Vocês têm contrato de fidelidade?",
-    a: "Não. Trabalhamos sem fidelidade — você pode cancelar quando quiser. Mas aviso: a maioria não quer.",
+    a: "Trabalhamos com vigência mínima de 3 meses. Não é pra te prender — é porque menos que isso não dá tempo de estruturar, otimizar e entregar resultado de verdade. Após os 3 meses, renovação automática com aviso prévio de 30 dias pra cancelar.",
   },
   {
     q: "Preciso entender de marketing para trabalhar com vocês?",

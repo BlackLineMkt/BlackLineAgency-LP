@@ -36,7 +36,7 @@ export function FinalCta() {
           ⚡ Restam apenas 8 vagas para este mês
         </p>
         <p className="reveal mt-2 text-xs text-muted-foreground/70">
-          Sem fidelidade. Cancele quando quiser.
+          Mínimo de 3 meses — porque resultado de verdade precisa desse tempo.
         </p>
 
         <p className="reveal mt-10 text-sm text-muted-foreground">
