@@ -36,17 +36,17 @@ export function Hero() {
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto md:text-lg"
             >
               Quero lotar minha agenda
-              <span className="transition-transform group-hover:translate-x-1">&#8594;</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             
               href="#planos"
               className="text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
             >
-              Conhecer os planos &#8594;
+              Conhecer os planos →
             </a>
           </div>
           <p className="mt-4 text-[12px] font-medium text-gold/80">
-            &#9889; Apenas 8 vagas disponíveis este mês
+            ⚡ Apenas 8 vagas disponíveis este mês
           </p>
         </div>
         <div className="reveal mx-auto mt-20 h-px w-2/3 max-w-xl gold-divider" />
