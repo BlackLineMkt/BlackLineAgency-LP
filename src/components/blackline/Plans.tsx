@@ -35,7 +35,6 @@ export function Plans() {
   return (
     <section id="planos" className="relative py-24 md:py-32">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-radial-gold opacity-60" />
-
       <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         <div className="reveal mx-auto max-w-3xl text-center">
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">
@@ -51,104 +50,60 @@ export function Plans() {
             Verba de anúncios não inclusa — fica direto com você na plataforma.
           </p>
         </div>
-
         <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-start">
           {plans.map((p, i) => {
             const isSelected = selected === p.name;
             const isRecommended = p.highlight;
             return (
-              <button
+              <div
                 key={p.name}
-                type="button"
-                onClick={() => setSelected(p.name)}
-                aria-pressed={isSelected}
-                className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 ${
+                className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 cursor-pointer ${
                   isSelected
                     ? "border-2 border-gold bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]"
                     : "border border-border bg-surface/60 hover:border-gold/40"
                 }`}
                 style={{ transitionDelay: `${i * 80}ms` }}
+                onClick={() => setSelected(p.name)}
               >
                 {isRecommended && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-gold px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground shadow-gold">
-                    ★ Mais escolhido
+                    &#9733; Mais escolhido
                   </span>
                 )}
-
                 <h3 className="font-display text-2xl font-bold text-foreground">
                   {p.name}
                 </h3>
-
                 <div className="mt-5 flex items-baseline gap-1.5">
-                  <span className="text-sm font-medium text-muted-foreground">
-                    R$
-                  </span>
-                  <span className="font-display text-5xl font-bold text-foreground">
-                    {p.price}
-                  </span>
-                  <span className="text-sm font-medium text-muted-foreground">
-                    /mês
-                  </span>
+                  <span className="text-sm font-medium text-muted-foreground">R$</span>
+                  <span className="font-display text-5xl font-bold text-foreground">{p.price}</span>
+                  <span className="text-sm font-medium text-muted-foreground">/mês</span>
                 </div>
-
                 <div className="my-7 h-px w-full bg-border" />
-
                 <ul className="flex flex-col gap-3.5">
                   {p.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-start gap-3 text-sm text-muted-foreground"
-                    >
-                      <span
-                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                          isSelected
-                            ? "bg-gold text-primary-foreground"
-                            : "bg-gold-soft text-gold"
-                        }`}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={3}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="m5 13 4 4L19 7"
-                          />
+                    <li key={f} className="flex items-start gap-3 text-sm text-muted-foreground">
+                      <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${isSelected ? "bg-gold text-primary-foreground" : "bg-gold-soft text-gold"}`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m5 13 4 4L19 7" />
                         </svg>
                       </span>
                       <span className="text-foreground/90">{f}</span>
                     </li>
                   ))}
                 </ul>
-
                 
-                  href={buildWhatsAppUrl(
-                    WHATSAPP_PLAN_MESSAGES[p.name] ?? "Olá, tenho interesse nos planos da Black Line Agency",
-                  )}
+                  href={buildWhatsAppUrl(WHATSAPP_PLAN_MESSAGES[p.name] ?? "Olá, tenho interesse nos planos da Black Line Agency")}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    trackWhatsAppClick(p.cta);
-                  }}
-                  className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.02] ${
-                    isSelected
-                      ? "bg-gradient-gold text-primary-foreground shadow-gold"
-                      : "border border-border bg-surface-elevated text-foreground hover:border-gold/50"
-                  }`}
+                  onClick={(e) => { e.stopPropagation(); trackWhatsAppClick(p.cta); }}
+                  className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.02] ${isSelected ? "bg-gradient-gold text-primary-foreground shadow-gold" : "border border-border bg-surface-elevated text-foreground hover:border-gold/50"}`}
                 >
                   {p.cta}
                 </a>
-              </button>
+              </div>
             );
           })}
         </div>
-
         <div className="reveal mx-auto mt-12 max-w-2xl text-center">
           <p className="text-sm text-muted-foreground">
             Não sabe qual escolher?{" "}
@@ -159,7 +114,7 @@ export function Plans() {
               onClick={() => trackWhatsAppClick('Fala com a gente e a gente indica o certo pro seu momento')}
               className="font-medium text-gold underline-offset-4 hover:underline"
             >
-              Fala com a gente e a gente indica o certo pro seu momento →
+              Fala com a gente e a gente indica o certo pro seu momento &#8594;
             </a>
           </p>
         </div>
