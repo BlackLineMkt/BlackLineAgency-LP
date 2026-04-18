@@ -3,6 +3,19 @@ import { useState } from "react";
 export function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    if (window.fbq) {
+      window.fbq('track', 'Lead', { content_name: 'Formulário de contato' });
+    }
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'form_submit',
+        form_name: 'lead_form',
+      });
+    }
+    setSubmitted(true);
+  };
+
   return (
     <section id="contato" className="relative py-24 md:py-32">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-radial-gold opacity-40" />
@@ -53,7 +66,7 @@ export function LeadForm() {
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              onSubmit={() => setSubmitted(true)}
+              onSubmit={handleSubmit}
               className="flex flex-col gap-5"
             >
               <input type="hidden" name="form-name" value="lead" />
