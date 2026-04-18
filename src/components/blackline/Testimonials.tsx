@@ -1,18 +1,15 @@
 const testimonials = [
   {
-    handle: "@studio.inkblack",
-    city: "São Paulo, SP",
-    text: "Em 45 dias a agenda estava lotada. Nunca imaginei que tráfego pago funcionasse tão bem para tatuagem.",
+    highlight: "45 dias, agenda lotada",
+    text: "Estúdio em São Paulo. Saiu de agenda irregular para lista de espera em menos de dois meses.",
   },
   {
-    handle: "@blackrose.tattoo",
-    city: "Belo Horizonte, MG",
-    text: "Saí de 3 clientes por semana para agenda cheia por 2 meses. O processo deles é diferente de qualquer agência que já contratei.",
+    highlight: "De 3 clientes por semana para agenda fechada",
+    text: "Estúdio em Belo Horizonte. Dois meses de processo e a agenda virou referência na cidade.",
   },
   {
-    handle: "@inkmaster.floripa",
-    city: "Florianópolis, SC",
-    text: "R$14.000 no primeiro mês completo. Achei que era promessa, mas funcionou de verdade.",
+    highlight: "R$14.000 no primeiro mês completo",
+    text: "Estúdio em Florianópolis. Resultado no primeiro mês de campanha ativa.",
   },
 ];
 
@@ -52,22 +49,17 @@ export function Testimonials() {
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <div
-              key={t.handle}
+              key={t.highlight}
               className="reveal relative flex flex-col rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               <Stars />
-              <p className="mt-5 flex-1 text-[15px] leading-relaxed text-foreground">
-                “{t.text}”
-              </p>
-              <div className="mt-6 border-t border-border pt-4">
-                <div className="font-display text-base font-semibold text-gradient-gold">
-                  {t.handle}
-                </div>
-                <div className="mt-0.5 text-xs text-muted-foreground">
-                  {t.city}
-                </div>
+              <div className="mt-5 font-display text-lg font-semibold leading-snug text-gradient-gold">
+                {t.highlight}
               </div>
+              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground">
+                {t.text}
+              </p>
             </div>
           ))}
         </div>

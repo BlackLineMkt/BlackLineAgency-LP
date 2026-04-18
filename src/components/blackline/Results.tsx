@@ -3,15 +3,16 @@ import { WHATSAPP_URL } from "@/lib/contact";
 const stats = [
   {
     value: "R$12.000",
-    label: "em faturamento com R$800/mês em tráfego",
+    label: "faturados por um estúdio parceiro no primeiro mês",
   },
   {
     value: "R$5.000",
-    label: "gerados em viagem com estratégia de geolocalização",
+    label: "gerados em uma única semana de viagem para tatuar fora",
   },
   {
     value: "60 dias",
-    label: "para agenda lotada — em menos disso",
+    label:
+      "é o tempo médio para transformar agenda pela metade em lista de espera",
   },
 ];
 
@@ -53,7 +54,7 @@ export function Results() {
             rel="noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
           >
-            Quero resultados assim →
+            Quero lotar minha agenda →
           </a>
         </div>
       </div>

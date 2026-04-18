@@ -1,7 +1,7 @@
 const stats = [
-  { value: "R$12.000", label: "faturados em média no 1º mês" },
-  { value: "R$15.000", label: "gerados via tráfego pago" },
-  { value: "60 dias", label: "para ver os primeiros resultados" },
+  { value: "+R$12k", label: "faturados no 1º mês por estúdios parceiros" },
+  { value: "<60 dias", label: "para agenda lotada" },
+  { value: "Nicho", label: "especialistas em tatuagem" },
 ];
 
 export function SocialProof() {
