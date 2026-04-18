@@ -8,6 +8,15 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WWND8QPL');</script>
     <!-- End Google Tag Manager -->
+    <script>
+    window.addEventListener('click', function(e) {
+      var el = e.target.closest('a');
+      if (el && el.href && el.href.includes('wa.me')) {
+        if (window.fbq) fbq('track', 'Lead', {content_name: el.innerText.trim()});
+        if (window.dataLayer) window.dataLayer.push({event: 'whatsapp_click', button_text: el.innerText.trim()});
+      }
+    });
+    </script>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,14 +37,12 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWND8QPL"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
     <!-- Netlify Forms detection (static form for build-time crawler) -->
     <form name="lead" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="tel" name="phone" />
       <input type="email" name="email" />
     </form>
-
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
