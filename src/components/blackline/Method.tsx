@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, trackWhatsAppClick } from "@/lib/contact";
 
 const steps = [
   {
@@ -36,13 +36,10 @@ export function Method() {
             <span className="text-gradient-gold"> Não uma tentativa.</span>
           </h2>
         </div>
-
         <div className="relative mt-16">
-          {/* Horizontal line desktop */}
           <div className="pointer-events-none absolute left-0 right-0 top-8 hidden h-px md:block">
             <div className="mx-auto h-full w-[85%] gold-divider" />
           </div>
-
           <div className="grid gap-8 md:grid-cols-4 md:gap-6">
             {steps.map((s, i) => (
               <div
@@ -65,12 +62,12 @@ export function Method() {
             ))}
           </div>
         </div>
-
         <div className="reveal mt-14 text-center">
-          <a
+          
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackWhatsAppClick('Quero aplicar esse método no meu studio')}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
           >
             Quero aplicar esse método no meu studio →
