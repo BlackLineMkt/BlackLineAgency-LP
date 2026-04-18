@@ -1,12 +1,13 @@
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, trackWhatsAppClick } from "@/lib/contact";
 
 export function FloatingWhatsApp() {
   return (
-    <a
+    
       href={WHATSAPP_URL}
       target="_blank"
       rel="noreferrer"
       aria-label="Falar no WhatsApp"
+      onClick={() => trackWhatsAppClick('Botão flutuante WhatsApp')}
       className="group fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-gold shadow-gold transition-transform hover:scale-110 md:bottom-8 md:right-8"
     >
       <svg
