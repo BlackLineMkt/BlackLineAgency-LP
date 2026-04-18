@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, WHATSAPP_PLAN_MESSAGES, buildWhatsAppUrl } from "@/lib/contact";
 
 const plans = [
   {
@@ -127,7 +127,9 @@ export function Plans() {
                 </ul>
 
                 <a
-                  href={WHATSAPP_URL}
+                  href={buildWhatsAppUrl(
+                    WHATSAPP_PLAN_MESSAGES[p.name] ?? "Olá, tenho interesse nos planos da Black Line Agency",
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   onClick={(e) => e.stopPropagation()}
