@@ -1,5 +1,4 @@
 import { WHATSAPP_URL, trackWhatsAppClick } from "@/lib/contact";
-
 export function Hero() {
   return (
     <section
@@ -28,20 +27,11 @@ export function Hero() {
             funil, criativos e CRM — tudo no mesmo lugar, tudo no seu nicho.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => trackWhatsAppClick('Quero lotar minha agenda')}
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto md:text-lg"
-            >
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Quero lotar minha agenda')} className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto md:text-lg">
               Quero lotar minha agenda
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            
-              href="#planos"
-              className="text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
-            >
+            <a href="#planos" className="text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline">
               Conhecer os planos →
             </a>
           </div>
