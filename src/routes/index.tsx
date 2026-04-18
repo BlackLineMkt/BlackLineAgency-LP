@@ -8,10 +8,12 @@ import { Method } from "@/components/blackline/Method";
 import { Services } from "@/components/blackline/Services";
 import { Plans } from "@/components/blackline/Plans";
 import { Results } from "@/components/blackline/Results";
+import { Testimonials } from "@/components/blackline/Testimonials";
 import { Faq } from "@/components/blackline/Faq";
 import { FinalCta } from "@/components/blackline/FinalCta";
 import { Footer } from "@/components/blackline/Footer";
 import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
+import { StickyMobileCta } from "@/components/blackline/StickyMobileCta";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -32,11 +34,13 @@ function Index() {
         <Services />
         <Plans />
         <Results />
+        <Testimonials />
         <Faq />
         <FinalCta />
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <StickyMobileCta />
     </div>
   );
 }
