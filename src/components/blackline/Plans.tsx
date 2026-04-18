@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { WHATSAPP_URL } from "@/lib/contact";
 
 const plans = [
@@ -29,6 +30,8 @@ const plans = [
 ];
 
 export function Plans() {
+  const [selected, setSelected] = useState<string>("Black Line");
+
   return (
     <section id="planos" className="relative py-24 md:py-32">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-radial-gold opacity-60" />
@@ -49,84 +52,96 @@ export function Plans() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {plans.map((p, i) => (
-            <div
-              key={p.name}
-              className={`reveal relative flex flex-col overflow-hidden rounded-3xl p-8 backdrop-blur transition-transform ${
-                p.highlight
-                  ? "border-2 border-gold bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]"
-                  : "border border-border bg-surface/60 hover:border-gold/40"
-              }`}
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              {p.highlight && (
-                <span className="absolute right-6 top-6 rounded-full bg-gradient-gold px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
-                  Mais escolhido
-                </span>
-              )}
-
-              <h3 className="font-display text-2xl font-bold text-foreground">
-                {p.name}
-              </h3>
-
-              <div className="mt-5 flex items-baseline gap-1.5">
-                <span className="text-sm font-medium text-muted-foreground">R$</span>
-                <span className="font-display text-5xl font-bold text-foreground">
-                  {p.price}
-                </span>
-                <span className="text-sm font-medium text-muted-foreground">/mês</span>
-              </div>
-
-              <div className="my-7 h-px w-full bg-border" />
-
-              <ul className="flex flex-col gap-3.5">
-                {p.features.map((f) => (
-                  <li
-                    key={f}
-                    className="flex items-start gap-3 text-sm text-muted-foreground"
-                  >
-                    <span
-                      className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                        p.highlight
-                          ? "bg-gold text-primary-foreground"
-                          : "bg-gold-soft text-gold"
-                      }`}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3 w-3"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m5 13 4 4L19 7"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-foreground/90">{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.02] ${
-                  p.highlight
-                    ? "bg-gradient-gold text-primary-foreground shadow-gold"
-                    : "border border-border bg-surface-elevated text-foreground hover:border-gold/50"
+        <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-start">
+          {plans.map((p, i) => {
+            const isSelected = selected === p.name;
+            const isRecommended = p.highlight;
+            return (
+              <button
+                key={p.name}
+                type="button"
+                onClick={() => setSelected(p.name)}
+                aria-pressed={isSelected}
+                className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 ${
+                  isSelected
+                    ? "border-2 border-gold bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]"
+                    : "border border-border bg-surface/60 hover:border-gold/40"
                 }`}
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
-                {p.cta}
-              </a>
-            </div>
-          ))}
+                {isRecommended && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-gold px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground shadow-gold">
+                    ★ Mais escolhido
+                  </span>
+                )}
+
+                <h3 className="font-display text-2xl font-bold text-foreground">
+                  {p.name}
+                </h3>
+
+                <div className="mt-5 flex items-baseline gap-1.5">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    R$
+                  </span>
+                  <span className="font-display text-5xl font-bold text-foreground">
+                    {p.price}
+                  </span>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    /mês
+                  </span>
+                </div>
+
+                <div className="my-7 h-px w-full bg-border" />
+
+                <ul className="flex flex-col gap-3.5">
+                  {p.features.map((f) => (
+                    <li
+                      key={f}
+                      className="flex items-start gap-3 text-sm text-muted-foreground"
+                    >
+                      <span
+                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                          isSelected
+                            ? "bg-gold text-primary-foreground"
+                            : "bg-gold-soft text-gold"
+                        }`}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={3}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m5 13 4 4L19 7"
+                          />
+                        </svg>
+                      </span>
+                      <span className="text-foreground/90">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.02] ${
+                    isSelected
+                      ? "bg-gradient-gold text-primary-foreground shadow-gold"
+                      : "border border-border bg-surface-elevated text-foreground hover:border-gold/50"
+                  }`}
+                >
+                  {p.cta}
+                </a>
+              </button>
+            );
+          })}
         </div>
 
         <div className="reveal mx-auto mt-12 max-w-2xl text-center">
