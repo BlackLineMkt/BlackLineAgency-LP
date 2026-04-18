@@ -16,33 +16,16 @@ export function FinalCta() {
           Fala com a gente. A primeira conversa é sem compromisso.
         </p>
         <div className="reveal mt-12">
-          
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => trackWhatsAppClick('Falar com a Black Line agora')}
-            className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-gold px-12 py-6 text-lg font-bold text-primary-foreground shadow-gold transition-transform hover:scale-[1.04] sm:w-auto md:px-16 md:py-7 md:text-xl"
-          >
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Falar com a Black Line agora')} className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-gold px-12 py-6 text-lg font-bold text-primary-foreground shadow-gold transition-transform hover:scale-[1.04] sm:w-auto md:px-16 md:py-7 md:text-xl">
             Falar com a Black Line agora
-            <span className="transition-transform group-hover:translate-x-1">
-              →
-            </span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
         </div>
-        <p className="reveal mt-6 text-[13px] font-medium text-gold/80">
-          ⚡ Restam apenas 8 vagas para este mês
-        </p>
-        <p className="reveal mt-2 text-xs text-muted-foreground/70">
-          Mínimo de 3 meses — porque resultado de verdade precisa desse tempo.
-        </p>
+        <p className="reveal mt-6 text-[13px] font-medium text-gold/80">⚡ Restam apenas 8 vagas para este mês</p>
+        <p className="reveal mt-2 text-xs text-muted-foreground/70">Mínimo de 3 meses — porque resultado de verdade precisa desse tempo.</p>
         <p className="reveal mt-10 text-sm text-muted-foreground">
           ou{" "}
-          
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="text-foreground underline-offset-4 hover:text-gold hover:underline"
-          >
-            {CONTACT_EMAIL}
-          </a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-foreground underline-offset-4 hover:text-gold hover:underline">{CONTACT_EMAIL}</a>
         </p>
       </div>
     </section>
