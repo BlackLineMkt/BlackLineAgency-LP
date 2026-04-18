@@ -18,18 +18,28 @@ export function FinalCta() {
           Fala com a gente. A primeira conversa é sem compromisso.
         </p>
 
-        <div className="reveal mt-10">
+        <div className="reveal mt-12">
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-9 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.04]"
+            className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-gold px-12 py-6 text-lg font-bold text-primary-foreground shadow-gold transition-transform hover:scale-[1.04] sm:w-auto md:px-16 md:py-7 md:text-xl"
           >
-            Falar com a Black Line agora →
+            Falar com a Black Line agora
+            <span className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
           </a>
         </div>
 
-        <p className="reveal mt-8 text-sm text-muted-foreground">
+        <p className="reveal mt-6 text-[13px] font-medium text-gold/80">
+          ⚡ Restam apenas 8 vagas para este mês
+        </p>
+        <p className="reveal mt-2 text-xs text-muted-foreground/70">
+          Sem fidelidade. Cancele quando quiser.
+        </p>
+
+        <p className="reveal mt-10 text-sm text-muted-foreground">
           ou{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}

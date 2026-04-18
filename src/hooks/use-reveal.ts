@@ -3,15 +3,20 @@ import { useEffect } from "react";
 export function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const markVisible = (el: HTMLElement) => {
+      el.classList.add("is-visible");
+      el.dataset.revealed = "true";
+    };
+
     if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("is-visible"));
+      els.forEach(markVisible);
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            markVisible(entry.target as HTMLElement);
             io.unobserve(entry.target);
           }
         });
