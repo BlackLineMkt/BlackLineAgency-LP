@@ -1,26 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/blackline/Navbar";
+import { Hero } from "@/components/blackline/Hero";
+import { Problem } from "@/components/blackline/Problem";
+import { About } from "@/components/blackline/About";
+import { Method } from "@/components/blackline/Method";
+import { Services } from "@/components/blackline/Services";
+import { Plans } from "@/components/blackline/Plans";
+import { Results } from "@/components/blackline/Results";
+import { Faq } from "@/components/blackline/Faq";
+import { FinalCta } from "@/components/blackline/FinalCta";
+import { Footer } from "@/components/blackline/Footer";
+import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
+  useReveal();
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <main>
+        <Hero />
+        <Problem />
+        <About />
+        <Method />
+        <Services />
+        <Plans />
+        <Results />
+        <Faq />
+        <FinalCta />
+      </main>
+      <Footer />
+      <FloatingWhatsApp />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
