@@ -1,7 +1,7 @@
 const stats = [
   { value: "+R$12k", label: "faturados no 1º mês por estúdios parceiros" },
   { value: "<60 dias", label: "para agenda lotada" },
-  { value: "Nicho", label: "especialistas em tatuagem" },
+  { value: "100%", label: "dedicado ao nicho tattoo" },
 ];
 
 export function SocialProof() {
