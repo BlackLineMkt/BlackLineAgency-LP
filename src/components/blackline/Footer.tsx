@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col items-center gap-3 md:items-start">
             <Logo />
             <p className="text-xs text-muted-foreground">
-              Especialistas em estúdios de tatuagem
+              Especialistas em studios de tatuagem
             </p>
           </div>
 

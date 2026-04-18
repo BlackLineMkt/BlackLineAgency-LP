@@ -16,11 +16,11 @@ export function Hero() {
         <div className="reveal mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            Especialistas em estúdios de tatuagem
+            Especialistas em studios de tatuagem
           </span>
 
           <h1 className="mt-7 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-            Seu estúdio merece uma
+            Seu studio merece uma
             <span className="block text-gradient-gold">agenda lotada.</span>
             <span className="block text-foreground">
               A gente sabe como fazer isso acontecer.

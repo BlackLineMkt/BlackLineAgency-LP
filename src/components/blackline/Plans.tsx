@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, WHATSAPP_PLAN_MESSAGES, buildWhatsAppUrl } from "@/lib/contact";
 
 const plans = [
   {
@@ -44,7 +44,7 @@ export function Plans() {
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
             Escolha o plano certo
             <span className="block text-gradient-gold">
-              pro seu estúdio crescer
+              pro seu studio crescer
             </span>
           </h2>
           <p className="mt-5 text-sm text-muted-foreground md:text-base">
@@ -127,7 +127,9 @@ export function Plans() {
                 </ul>
 
                 <a
-                  href={WHATSAPP_URL}
+                  href={buildWhatsAppUrl(
+                    WHATSAPP_PLAN_MESSAGES[p.name] ?? "Olá, tenho interesse nos planos da Black Line Agency",
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   onClick={(e) => e.stopPropagation()}

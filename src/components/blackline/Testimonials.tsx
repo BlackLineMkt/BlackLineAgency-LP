@@ -1,15 +1,15 @@
 const testimonials = [
   {
     highlight: "45 dias, agenda lotada",
-    text: "Estúdio em São Paulo. Saiu de agenda irregular para lista de espera em menos de dois meses.",
+    text: "Studio em São Paulo. Saiu de agenda irregular para lista de espera em menos de dois meses.",
   },
   {
     highlight: "De 3 clientes por semana para agenda fechada",
-    text: "Estúdio em Belo Horizonte. Dois meses de processo e a agenda virou referência na cidade.",
+    text: "Studio em Belo Horizonte. Dois meses de processo e a agenda virou referência na cidade.",
   },
   {
     highlight: "R$14.000 no primeiro mês completo",
-    text: "Estúdio em Florianópolis. Resultado no primeiro mês de campanha ativa.",
+    text: "Studio em Florianópolis. Resultado no primeiro mês de campanha ativa.",
   },
 ];
 
@@ -23,7 +23,7 @@ export function Testimonials() {
             Depoimentos
           </span>
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
-            O que estúdios{" "}
+            O que studios{" "}
             <span className="text-gradient-gold">falam da gente</span>
           </h2>
         </div>
