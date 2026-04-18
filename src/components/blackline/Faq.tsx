@@ -21,6 +21,14 @@ const faqs = [
     q: "Já tentei agência e não funcionou. Por quê seria diferente?",
     a: "Porque a Black Line nasceu dentro do nicho. Não aplicamos fórmula genérica — construímos estratégia pra estúdio de tatuagem.",
   },
+  {
+    q: "Funciona para estúdio novo, sem seguidores?",
+    a: "Sim. Nossa metodologia foi construída para funcionar do zero. Trabalhamos tráfego pago e posicionamento orgânico simultaneamente, então você não precisa de audiência prévia para começar a lotar a agenda.",
+  },
+  {
+    q: "Preciso saber de marketing para usar a plataforma?",
+    a: "Não. A gente cuida de tudo — estratégia, criação, tráfego e CRM. Você só precisa tatuar. Nosso ecossistema foi feito para tatuadores, não para marqueteiros.",
+  },
 ];
 
 export function Faq() {
@@ -52,7 +60,7 @@ export function Faq() {
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left"
                 >
-                  <span className="font-display text-base font-semibold text-foreground md:text-lg">
+                  <span className="font-display text-[15px] font-semibold text-foreground md:text-lg">
                     {f.q}
                   </span>
                   <span
@@ -86,7 +94,7 @@ export function Faq() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    <p className="px-6 pb-6 text-[14px] leading-relaxed text-muted-foreground md:text-base">
                       {f.a}
                     </p>
                   </div>

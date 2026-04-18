@@ -37,7 +37,7 @@ export function Hero() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto md:text-lg"
             >
               Quero lotar minha agenda
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -49,6 +49,10 @@ export function Hero() {
               Conhecer os planos →
             </a>
           </div>
+
+          <p className="mt-4 text-[12px] font-medium text-gold/80">
+            ⚡ Apenas 8 vagas disponíveis este mês
+          </p>
         </div>
 
         {/* Decorative gold line */}
