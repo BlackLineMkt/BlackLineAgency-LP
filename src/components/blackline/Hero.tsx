@@ -6,7 +6,6 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden pt-32 pb-24 md:pt-44 md:pb-32"
     >
-      {/* Backdrop effects */}
       <div className="pointer-events-none absolute inset-0 bg-radial-gold" />
       <div className="pointer-events-none absolute inset-0 bg-grain opacity-40" />
       <div className="pointer-events-none absolute -left-32 top-40 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
@@ -37,20 +36,19 @@ export function Hero() {
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto md:text-lg"
             >
               Quero lotar minha agenda
-              <span className="transition-transform group-hover:translate-x-1">→</span>
+              <span className="transition-transform group-hover:translate-x-1">&#8594;</span>
             </a>
             
               href="#planos"
               className="text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
             >
-              Conhecer os planos →
+              Conhecer os planos &#8594;
             </a>
           </div>
           <p className="mt-4 text-[12px] font-medium text-gold/80">
-            ⚡ Apenas 8 vagas disponíveis este mês
+            &#9889; Apenas 8 vagas disponíveis este mês
           </p>
         </div>
-        {/* Decorative gold line */}
         <div className="reveal mx-auto mt-20 h-px w-2/3 max-w-xl gold-divider" />
       </div>
     </section>
