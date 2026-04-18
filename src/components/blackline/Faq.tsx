@@ -10,8 +10,8 @@ const faqs = [
     a: "30 a 60 dias pro funil otimizar. No primeiro mês estrutura e testa, no segundo otimiza, no terceiro resultado consistente.",
   },
   {
-    q: "Vocês atendem qualquer estúdio?",
-    a: "Não. Atendemos estúdios Em Ascensão e Consolidados — que já têm base e querem escalar.",
+    q: "Vocês atendem qualquer studio?",
+    a: "Não. Atendemos studios Em Ascensão e Consolidados — que já têm base e querem escalar.",
   },
   {
     q: "Preciso gravar conteúdo?",
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Já tentei agência e não funcionou. Por quê seria diferente?",
-    a: "Porque a Black Line nasceu dentro do nicho. Não aplicamos fórmula genérica — construímos estratégia pra estúdio de tatuagem.",
+    a: "Porque a Black Line nasceu dentro do nicho. Não aplicamos fórmula genérica — construímos estratégia pra studio de tatuagem.",
   },
   {
     q: "Vocês têm contrato de fidelidade?",
@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "Preciso entender de marketing para trabalhar com vocês?",
-    a: "Não. Você entende do seu estúdio e da sua arte — a gente cuida do resto. Nossa função é tirar esse peso das suas costas.",
+    a: "Não. Você entende do seu studio e da sua arte — a gente cuida do resto. Nossa função é tirar esse peso das suas costas.",
   },
 ];
 

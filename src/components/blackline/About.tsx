@@ -49,12 +49,12 @@ export function About() {
           <h2 className="reveal mx-auto mt-5 max-w-4xl font-display text-3xl font-bold leading-tight md:text-5xl">
             Não somos uma agência.
             <span className="block text-gradient-gold">
-              Somos o ecossistema completo do seu estúdio.
+              Somos o ecossistema completo do seu studio.
             </span>
           </h2>
           <p className="reveal mx-auto mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
             A Black Line nasceu dentro do nicho. Entendemos a cultura, falamos a
-            língua do estúdio e sabemos o que funciona nesse mercado. Enquanto
+            língua do studio e sabemos o que funciona nesse mercado. Enquanto
             agências genéricas empurram fórmula, a gente constrói infraestrutura
             completa de crescimento — do primeiro anúncio ao atendimento que
             fecha agenda.

@@ -73,7 +73,7 @@ export function Method() {
             rel="noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
           >
-            Quero aplicar esse método no meu estúdio →
+            Quero aplicar esse método no meu studio →
           </a>
         </div>
       </div>

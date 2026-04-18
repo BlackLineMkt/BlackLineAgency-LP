@@ -3,7 +3,7 @@ import { WHATSAPP_URL } from "@/lib/contact";
 const stats = [
   {
     value: "R$12.000",
-    label: "faturados por um estúdio parceiro no primeiro mês",
+    label: "faturados por um studio parceiro no primeiro mês",
   },
   {
     value: "R$5.000",

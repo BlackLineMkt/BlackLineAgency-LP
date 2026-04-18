@@ -44,7 +44,7 @@ export function Plans() {
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
             Escolha o plano certo
             <span className="block text-gradient-gold">
-              pro seu estúdio crescer
+              pro seu studio crescer
             </span>
           </h2>
           <p className="mt-5 text-sm text-muted-foreground md:text-base">
