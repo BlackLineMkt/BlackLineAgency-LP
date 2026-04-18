@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/blackline/Navbar";
 import { Hero } from "@/components/blackline/Hero";
 import { SocialProof } from "@/components/blackline/SocialProof";
@@ -16,11 +15,7 @@ import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
 import { StickyMobileCta } from "@/components/blackline/StickyMobileCta";
 import { useReveal } from "@/hooks/use-reveal";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-function Index() {
+export default function App() {
   useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground">
