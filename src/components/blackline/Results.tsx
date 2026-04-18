@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, trackWhatsAppClick } from "@/lib/contact";
 
 const stats = [
   {
@@ -28,7 +28,6 @@ export function Results() {
             Números reais <span className="text-gradient-gold">do nicho</span>
           </h2>
         </div>
-
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {stats.map((s, i) => (
             <div
@@ -46,12 +45,12 @@ export function Results() {
             </div>
           ))}
         </div>
-
         <div className="reveal mt-12 text-center">
-          <a
+          
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackWhatsAppClick('Quero lotar minha agenda - Results')}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
           >
             Quero lotar minha agenda →
