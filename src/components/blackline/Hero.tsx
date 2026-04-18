@@ -28,8 +28,8 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Somos um ecossistema completo para estúdios de tatuagem. Tráfego,
-            funis, CRM e criativos — tudo com a linguagem do nicho.
+            Marketing completo feito por quem entende de tatuagem. Tráfego,
+            funil, criativos e CRM — tudo no mesmo lugar, tudo no seu nicho.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
