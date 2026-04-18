@@ -22,23 +22,10 @@ export function StickyMobileCta() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 px-4 pb-4 pt-3 transition-all duration-300 md:hidden ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-full opacity-0"
-      }`}
-      style={{
-        background:
-          "linear-gradient(to top, oklch(0.13 0 0) 60%, transparent)",
-      }}
+      className={`fixed inset-x-0 bottom-0 z-40 px-4 pb-4 pt-3 transition-all duration-300 md:hidden ${visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"}`}
+      style={{ background: "linear-gradient(to top, oklch(0.13 0 0) 60%, transparent)" }}
     >
-      
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noreferrer"
-        onClick={() => trackWhatsAppClick('Quero lotar minha agenda - Mobile')}
-        className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold"
-      >
+      <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Quero lotar minha agenda - Mobile')} className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold">
         Quero lotar minha agenda →
       </a>
     </div>
