@@ -85,7 +85,33 @@ export function LeadForm() {
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="phone" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Telefone</label>
-                <input id="phone" name="phone" type="tel" required placeholder="(11) 99999-9999" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  inputMode="numeric"
+                  maxLength={15}
+                  pattern="[0-9()\s\-]{10,15}"
+                  title="Digite um telefone válido com DDD (ex: (11) 99999-9999)"
+                  placeholder="(11) 99999-9999"
+                  onInput={(e) => {
+                    const input = e.currentTarget;
+                    const digits = input.value.replace(/\D/g, "").slice(0, 11);
+                    let formatted = digits;
+                    if (digits.length > 10) {
+                      formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+                    } else if (digits.length > 6) {
+                      formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+                    } else if (digits.length > 2) {
+                      formatted = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+                    } else if (digits.length > 0) {
+                      formatted = `(${digits}`;
+                    }
+                    input.value = formatted;
+                  }}
+                  className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
+                />
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</label>
