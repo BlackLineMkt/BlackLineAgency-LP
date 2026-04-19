@@ -1,12 +1,40 @@
 import { useState } from "react";
 
+const WEB3FORMS_ACCESS_KEY = "a35860a6-d63f-498f-85dd-dbafc9d8406f";
+
 export function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = () => {
-    if (window.fbq) window.fbq('track', 'Lead', { content_name: 'Formulário de contato' });
-    if (window.dataLayer) window.dataLayer.push({ event: 'form_submit', form_name: 'lead_form' });
-    setSubmitted(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    setSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "Novo lead — Black Line Agency");
+    formData.append("from_name", "Black Line Agency — Site");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        if (window.fbq) window.fbq('track', 'Lead', { content_name: 'Formulário de contato' });
+        if (window.dataLayer) window.dataLayer.push({ event: 'form_submit', form_name: 'lead_form' });
+        setSubmitted(true);
+      } else {
+        setError("Não conseguimos enviar agora. Tenta de novo em instantes.");
+      }
+    } catch {
+      setError("Erro de conexão. Verifica sua internet e tenta de novo.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -32,9 +60,8 @@ export function LeadForm() {
               <p className="mt-3 text-sm text-muted-foreground">A gente entra em contato em breve.</p>
             </div>
           ) : (
-            <form name="lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <input type="hidden" name="form-name" value="lead" />
-              <p className="hidden"><label>Não preencha: <input name="bot-field" /></label></p>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <input type="hidden" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Nome</label>
                 <input id="name" name="name" type="text" required placeholder="Seu nome" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
@@ -64,8 +91,11 @@ export function LeadForm() {
                 <label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</label>
                 <input id="email" name="email" type="email" required placeholder="voce@email.com" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
               </div>
-              <button type="submit" className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02]">
-                Quero lotar minha agenda →
+              {error && (
+                <p className="text-center text-sm text-red-400">{error}</p>
+              )}
+              <button type="submit" disabled={submitting} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70">
+                {submitting ? "Enviando..." : "Quero lotar minha agenda →"}
               </button>
               <p className="text-center text-xs text-muted-foreground/80">Seus dados ficam só com a gente. Sem spam.</p>
             </form>
