@@ -40,6 +40,23 @@ export function LeadForm() {
                 <input id="name" name="name" type="text" required placeholder="Seu nome" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
               </div>
               <div className="flex flex-col gap-2">
+                <label htmlFor="studio" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Nome do Studio</label>
+                <input id="studio" name="studio" type="text" required placeholder="Nome do seu studio" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="instagram" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">@ do Instagram</label>
+                <input id="instagram" name="instagram" type="text" required placeholder="@seustudio" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="state" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Estado</label>
+                <select id="state" name="state" required defaultValue="" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors focus:border-gold/60">
+                  <option value="" disabled>Selecione seu estado</option>
+                  {["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"].map((uf) => (
+                    <option key={uf} value={uf}>{uf}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
                 <label htmlFor="phone" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Telefone</label>
                 <input id="phone" name="phone" type="tel" required placeholder="(11) 99999-9999" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
               </div>
