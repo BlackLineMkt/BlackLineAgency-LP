@@ -1,3 +1,5 @@
+import type { MouseEvent } from "react";
+
 const WHATSAPP_NUMBER = "5561994014479";
 
 export const trackWhatsAppClick = (buttonText: string) => {
@@ -21,7 +23,7 @@ export const trackWhatsAppClick = (buttonText: string) => {
 export const handleWhatsAppClick = (
   url: string,
   buttonText: string,
-) => (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+) => (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
   event.preventDefault();
   event.stopPropagation();
   trackWhatsAppClick(buttonText);
