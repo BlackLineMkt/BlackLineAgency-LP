@@ -1,6 +1,7 @@
 const WHATSAPP_NUMBER = "5561994014479";
 
 export const trackWhatsAppClick = (buttonText: string) => {
+  if (typeof window === 'undefined') return;
   if (window.fbq) {
     window.fbq('track', 'Lead', { content_name: buttonText });
   }
@@ -10,6 +11,23 @@ export const trackWhatsAppClick = (buttonText: string) => {
       button_text: buttonText,
     });
   }
+};
+
+/**
+ * Dispara o tracking (fbq Lead + dataLayer) e só depois abre o WhatsApp,
+ * com delay de 300ms para garantir que o evento seja enviado antes da navegação.
+ * Use em onClick de qualquer botão/link que aponte para wa.me.
+ */
+export const handleWhatsAppClick = (
+  url: string,
+  buttonText: string,
+) => (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+  event.preventDefault();
+  event.stopPropagation();
+  trackWhatsAppClick(buttonText);
+  window.setTimeout(() => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }, 300);
 };
 
 export const buildWhatsAppUrl = (message: string) =>
