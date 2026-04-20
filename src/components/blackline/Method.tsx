@@ -35,8 +35,8 @@ export function Method() {
           </div>
         </div>
         <div className="reveal mt-14 text-center">
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Quero aplicar esse método no meu studio')} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]">
-            Quero aplicar esse método no meu studio →
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Quero aplicar esse método no meu estúdio')} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]">
+            Quero aplicar esse método no meu estúdio →
           </a>
         </div>
       </div>

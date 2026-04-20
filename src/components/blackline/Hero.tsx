@@ -24,7 +24,7 @@ export function Hero() {
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
             Marketing completo feito por quem entende de tatuagem. Tráfego,
-            funil, criativos e CRM — tudo no mesmo lugar, tudo no seu nicho.
+            funil, criativos e CRM. Tudo no mesmo lugar, tudo no seu nicho.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Quero lotar minha agenda')} className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto md:text-lg">

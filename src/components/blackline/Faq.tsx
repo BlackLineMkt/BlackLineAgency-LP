@@ -3,31 +3,31 @@ import { useState } from "react";
 const faqs = [
   {
     q: "A verba de anúncios está inclusa?",
-    a: "Não. A verba fica direto com você na plataforma — você tem controle total.",
+    a: "Não. A verba fica direto com você na plataforma, com controle total.",
   },
   {
     q: "Quanto tempo leva pra ver resultado?",
     a: "30 a 60 dias pro funil otimizar. No primeiro mês estrutura e testa, no segundo otimiza, no terceiro resultado consistente.",
   },
   {
-    q: "Vocês atendem qualquer studio?",
-    a: "Não. Atendemos studios Em Ascensão e Consolidados — que já têm base e querem escalar.",
+    q: "Vocês atendem qualquer estúdio?",
+    a: "Não. Atendemos estúdios Em Ascensão e Consolidados, que já têm base e querem escalar.",
   },
   {
     q: "Preciso gravar conteúdo?",
-    a: "Sim, mas sem virar criador de conteúdo. A gente manda o roteiro — você filma 2 minutos do processo que já faz e a gente cuida do resto.",
+    a: "Sim, mas sem virar criador de conteúdo. A gente manda o roteiro, você filma 2 minutos do processo que já faz e a gente cuida do resto.",
   },
   {
     q: "Já tentei agência e não funcionou. Por quê seria diferente?",
-    a: "Porque a Black Line nasceu dentro do nicho. Não aplicamos fórmula genérica — construímos estratégia pra studio de tatuagem.",
+    a: "Porque a Black Line nasceu dentro do nicho. Não aplicamos fórmula genérica: construímos estratégia pra estúdio de tatuagem.",
   },
   {
     q: "Vocês têm contrato de fidelidade?",
-    a: "Trabalhamos com vigência mínima de 3 meses. Não é pra te prender — é porque menos que isso não dá tempo de estruturar, otimizar e entregar resultado de verdade. Após os 3 meses, renovação automática com aviso prévio de 30 dias pra cancelar.",
+    a: "Trabalhamos com vigência mínima de 3 meses. Não é pra te prender. É porque menos que isso não dá tempo de estruturar, otimizar e entregar resultado de verdade. Após os 3 meses, renovação automática com aviso prévio de 30 dias pra cancelar.",
   },
   {
     q: "Preciso entender de marketing para trabalhar com vocês?",
-    a: "Não. Você entende do seu studio e da sua arte — a gente cuida do resto. Nossa função é tirar esse peso das suas costas.",
+    a: "Não. Você entende do seu estúdio e da sua arte. A gente cuida do resto. Nossa função é tirar esse peso das suas costas.",
   },
 ];
 

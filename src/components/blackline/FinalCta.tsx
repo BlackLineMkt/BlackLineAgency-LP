@@ -22,7 +22,7 @@ export function FinalCta() {
           </a>
         </div>
         <p className="reveal mt-6 text-[13px] font-medium text-gold/80">⚡ Restam apenas 8 vagas para este mês</p>
-        <p className="reveal mt-2 text-xs text-muted-foreground/70">Mínimo de 3 meses — porque resultado de verdade precisa desse tempo.</p>
+        <p className="reveal mt-2 text-xs text-muted-foreground/70">Mínimo de 3 meses, porque resultado de verdade precisa desse tempo.</p>
         <p className="reveal mt-10 text-sm text-muted-foreground">
           ou{" "}
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-foreground underline-offset-4 hover:text-gold hover:underline">{CONTACT_EMAIL}</a>

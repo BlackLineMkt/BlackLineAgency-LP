@@ -17,9 +17,9 @@ export function Plans() {
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">Planos</span>
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
             Escolha o plano certo
-            <span className="block text-gradient-gold">pro seu studio crescer</span>
+            <span className="block text-gradient-gold">pro seu estúdio crescer</span>
           </h2>
-          <p className="mt-5 text-sm text-muted-foreground md:text-base">Verba de anúncios não inclusa — fica direto com você na plataforma.</p>
+          <p className="mt-5 text-sm text-muted-foreground md:text-base">Verba de anúncios não inclusa: fica direto com você na plataforma.</p>
         </div>
         <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-start">
           {plans.map((p, i) => {
