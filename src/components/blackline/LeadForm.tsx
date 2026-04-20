@@ -14,8 +14,8 @@ export function LeadForm() {
 
     const formData = new FormData(e.currentTarget);
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.append("subject", "Novo lead — Black Line Agency");
-    formData.append("from_name", "Black Line Agency — Site");
+    formData.append("subject", "Novo lead - Black Line Agency");
+    formData.append("from_name", "Black Line Agency - Site");
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
