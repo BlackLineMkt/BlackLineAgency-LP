@@ -8,15 +8,8 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WWND8QPL');</script>
     <!-- End Google Tag Manager -->
-    <script>
-    window.addEventListener('click', function(e) {
-      var el = e.target.closest('a');
-      if (el && el.href && el.href.includes('wa.me')) {
-        if (window.fbq) fbq('track', 'Lead', {content_name: el.innerText.trim()});
-        if (window.dataLayer) window.dataLayer.push({event: 'whatsapp_click', button_text: el.innerText.trim()});
-      }
-    });
-    </script>
+    <!-- Tracking de cliques no WhatsApp é feito no React via handleWhatsAppClick (src/lib/contact.ts) -->
+
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
