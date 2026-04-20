@@ -13,10 +13,10 @@ export function Hero() {
         <div className="reveal mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            Especialistas em studios de tatuagem
+            Especialistas em estúdios de tatuagem
           </span>
           <h1 className="mt-7 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-            Seu studio merece uma
+            Seu estúdio merece uma
             <span className="block text-gradient-gold">agenda lotada.</span>
             <span className="block text-foreground">
               A gente sabe como fazer isso acontecer.
@@ -24,7 +24,7 @@ export function Hero() {
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
             Marketing completo feito por quem entende de tatuagem. Tráfego,
-            funil, criativos e CRM — tudo no mesmo lugar, tudo no seu nicho.
+            funil, criativos e CRM. Tudo no mesmo lugar, tudo no seu nicho.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Quero lotar minha agenda')} className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:w-auto md:text-lg">

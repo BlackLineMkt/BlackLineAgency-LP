@@ -1,7 +1,7 @@
 import { WHATSAPP_URL, trackWhatsAppClick } from "@/lib/contact";
 
 const stats = [
-  { value: "R$12.000", label: "faturados por um studio parceiro no primeiro mês" },
+  { value: "R$12.000", label: "faturados por um estúdio parceiro no primeiro mês" },
   { value: "R$5.000", label: "gerados em uma única semana de viagem para tatuar fora" },
   { value: "60 dias", label: "é o tempo médio para transformar agenda pela metade em lista de espera" },
 ];

@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col items-center gap-3 md:items-start">
             <Logo />
             <p className="text-xs text-muted-foreground">
-              Especialistas em studios de tatuagem
+              Especialistas em estúdios de tatuagem
             </p>
           </div>
 
@@ -34,7 +34,7 @@ export function Footer() {
         <div className="mt-10 h-px w-full bg-border" />
 
         <p className="mt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Black Line Agency — Todos os direitos
+          © {new Date().getFullYear()} Black Line Agency. Todos os direitos
           reservados.
         </p>
       </div>

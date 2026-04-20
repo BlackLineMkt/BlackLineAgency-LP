@@ -9,7 +9,7 @@ const items = [
         d="M3 12h3l3-9 4 18 3-9h5"
       />
     ),
-    text: "Agenda irregular — ora cheia, ora vazia",
+    text: "Agenda irregular: ora cheia, ora vazia",
   },
   {
     icon: (

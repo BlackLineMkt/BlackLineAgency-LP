@@ -1,5 +1,5 @@
 const stats = [
-  { value: "+R$12k", label: "faturados no 1º mês por studios parceiros" },
+  { value: "+R$12k", label: "faturados no 1º mês por estúdios parceiros" },
   { value: "<60 dias", label: "para agenda lotada" },
   { value: "100%", label: "dedicado ao nicho tattoo" },
 ];
