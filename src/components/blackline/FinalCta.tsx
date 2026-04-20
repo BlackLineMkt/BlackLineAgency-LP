@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, WHATSAPP_URL, trackWhatsAppClick } from "@/lib/contact";
+import { CONTACT_EMAIL, WHATSAPP_URL, handleWhatsAppClick } from "@/lib/contact";
 
 export function FinalCta() {
   return (
@@ -16,7 +16,7 @@ export function FinalCta() {
           Fala com a gente. A primeira conversa é sem compromisso.
         </p>
         <div className="reveal mt-12">
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Falar com a Black Line agora')} className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-gold px-12 py-6 text-lg font-bold text-primary-foreground shadow-gold transition-transform hover:scale-[1.04] sm:w-auto md:px-16 md:py-7 md:text-xl">
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={handleWhatsAppClick(WHATSAPP_URL, 'Falar com a Black Line agora')} className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-gold px-12 py-6 text-lg font-bold text-primary-foreground shadow-gold transition-transform hover:scale-[1.04] sm:w-auto md:px-16 md:py-7 md:text-xl">
             Falar com a Black Line agora
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>

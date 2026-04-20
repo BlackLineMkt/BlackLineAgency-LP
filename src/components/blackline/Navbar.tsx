@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, handleWhatsAppClick } from "@/lib/contact";
 import { Logo } from "./Logo";
 import { useEffect, useState } from "react";
 
@@ -49,6 +49,7 @@ export function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={handleWhatsAppClick(WHATSAPP_URL, 'Falar com a Black Line - Navbar')}
             className="inline-flex items-center justify-center rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
           >
             Falar com a Black Line
@@ -86,6 +87,7 @@ export function Navbar() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
+              onClick={handleWhatsAppClick(WHATSAPP_URL, 'Falar com a Black Line - Menu Mobile')}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-gold px-5 py-3 text-sm font-semibold text-primary-foreground"
             >
               Falar com a Black Line

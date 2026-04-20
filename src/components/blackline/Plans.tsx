@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WHATSAPP_URL, WHATSAPP_PLAN_MESSAGES, buildWhatsAppUrl, trackWhatsAppClick } from "@/lib/contact";
+import { WHATSAPP_URL, WHATSAPP_PLAN_MESSAGES, buildWhatsAppUrl, handleWhatsAppClick } from "@/lib/contact";
 
 const plans = [
   { name: "Starter", price: "1.500", features: ["Meta Ads", "Criativos", "Copy", "Relatório mensal"], cta: "Quero o Starter", highlight: false },
@@ -44,13 +44,13 @@ export function Plans() {
                     </li>
                   ))}
                 </ul>
-                <a href={buildWhatsAppUrl(WHATSAPP_PLAN_MESSAGES[p.name] ?? "Olá, tenho interesse nos planos da Black Line Agency")} target="_blank" rel="noreferrer" onClick={(e) => { e.stopPropagation(); trackWhatsAppClick(p.cta); }} className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.02] ${isSelected ? "bg-gradient-gold text-primary-foreground shadow-gold" : "border border-border bg-surface-elevated text-foreground hover:border-gold/50"}`}>{p.cta}</a>
+                <a href={buildWhatsAppUrl(WHATSAPP_PLAN_MESSAGES[p.name] ?? "Olá, tenho interesse nos planos da Black Line Agency")} target="_blank" rel="noreferrer" onClick={handleWhatsAppClick(buildWhatsAppUrl(WHATSAPP_PLAN_MESSAGES[p.name] ?? "Olá, tenho interesse nos planos da Black Line Agency"), p.cta)} className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.02] ${isSelected ? "bg-gradient-gold text-primary-foreground shadow-gold" : "border border-border bg-surface-elevated text-foreground hover:border-gold/50"}`}>{p.cta}</a>
               </div>
             );
           })}
         </div>
         <div className="reveal mx-auto mt-12 max-w-2xl text-center">
-          <p className="text-sm text-muted-foreground">Não sabe qual escolher?{" "}<a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Fala com a gente')} className="font-medium text-gold underline-offset-4 hover:underline">Fala com a gente e a gente indica o certo pro seu momento →</a></p>
+          <p className="text-sm text-muted-foreground">Não sabe qual escolher?{" "}<a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={handleWhatsAppClick(WHATSAPP_URL, 'Fala com a gente')} className="font-medium text-gold underline-offset-4 hover:underline">Fala com a gente e a gente indica o certo pro seu momento →</a></p>
         </div>
       </div>
     </section>

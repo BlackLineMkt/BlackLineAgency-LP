@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, handleWhatsAppClick } from "@/lib/contact";
 
 const items = [
   {
@@ -81,6 +81,7 @@ export function Problem() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={handleWhatsAppClick(WHATSAPP_URL, 'Isso tem solução. Fala com a gente')}
             className="text-sm font-medium text-gold underline-offset-4 hover:underline"
           >
             Isso tem solução. Fala com a gente →
