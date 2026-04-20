@@ -40,13 +40,13 @@ export function LeadForm() {
   return (
     <section id="contato" className="relative py-24 md:py-32">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-radial-gold opacity-40" />
-      <div className="relative mx-auto max-w-2xl px-5 md:px-8">
+      <div className="relative mx-auto max-w-4xl px-5 md:px-8">
         <div className="reveal mx-auto max-w-2xl text-center">
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">Contato</span>
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
             Fala com a <span className="text-gradient-gold">Black Line</span>
           </h2>
-          <p className="mt-5 text-sm text-muted-foreground md:text-base">Deixa seus dados que a gente entra em contato pra entender o momento do seu studio.</p>
+          <p className="mt-5 text-sm text-muted-foreground md:text-base">Deixa seus dados que a gente entra em contato pra entender o momento do seu estúdio.</p>
         </div>
         <div className="reveal mt-10 rounded-3xl border border-border bg-surface/60 p-6 backdrop-blur md:p-10">
           {submitted ? (
@@ -62,63 +62,65 @@ export function LeadForm() {
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <input type="hidden" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
-              <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Nome</label>
-                <input id="name" name="name" type="text" required placeholder="Seu nome" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="studio" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Nome do Studio</label>
-                <input id="studio" name="studio" type="text" required placeholder="Nome do seu studio" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="instagram" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">@ do Instagram</label>
-                <input id="instagram" name="instagram" type="text" required placeholder="@seustudio" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="state" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Estado</label>
-                <select id="state" name="state" required defaultValue="" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors focus:border-gold/60">
-                  <option value="" disabled>Selecione seu estado</option>
-                  {["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"].map((uf) => (
-                    <option key={uf} value={uf}>{uf}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="phone" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Telefone</label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  inputMode="numeric"
-                  maxLength={15}
-                  pattern="[0-9()\s\-]{10,15}"
-                  title="Digite um telefone válido com DDD (ex: (11) 99999-9999)"
-                  placeholder="(11) 99999-9999"
-                  onInput={(e) => {
-                    const input = e.currentTarget;
-                    const digits = input.value.replace(/\D/g, "").slice(0, 11);
-                    let formatted = digits;
-                    if (digits.length > 10) {
-                      formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-                    } else if (digits.length > 6) {
-                      formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
-                    } else if (digits.length > 2) {
-                      formatted = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-                    } else if (digits.length > 0) {
-                      formatted = `(${digits}`;
-                    }
-                    input.value = formatted;
-                  }}
-                  className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</label>
-                <input id="email" name="email" type="email" required placeholder="voce@email.com" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+              <div className="grid gap-5 md:grid-cols-2">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="name" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Nome</label>
+                  <input id="name" name="name" type="text" required placeholder="Seu nome" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="studio" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Nome do Estúdio</label>
+                  <input id="studio" name="studio" type="text" required placeholder="Nome do seu estúdio" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="instagram" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">@ do Instagram</label>
+                  <input id="instagram" name="instagram" type="text" required placeholder="@seuestudio" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="state" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Estado</label>
+                  <select id="state" name="state" required defaultValue="" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors focus:border-gold/60">
+                    <option value="" disabled>Selecione seu estado</option>
+                    {["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"].map((uf) => (
+                      <option key={uf} value={uf}>{uf}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="phone" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Telefone</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    inputMode="numeric"
+                    maxLength={15}
+                    pattern="[0-9()\s\-]{10,15}"
+                    title="Digite um telefone válido com DDD (ex: (11) 99999-9999)"
+                    placeholder="(11) 99999-9999"
+                    onInput={(e) => {
+                      const input = e.currentTarget;
+                      const digits = input.value.replace(/\D/g, "").slice(0, 11);
+                      let formatted = digits;
+                      if (digits.length > 10) {
+                        formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+                      } else if (digits.length > 6) {
+                        formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+                      } else if (digits.length > 2) {
+                        formatted = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+                      } else if (digits.length > 0) {
+                        formatted = `(${digits}`;
+                      }
+                      input.value = formatted;
+                    }}
+                    className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</label>
+                  <input id="email" name="email" type="email" required placeholder="voce@email.com" className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60" />
+                </div>
               </div>
               {error && (
-                <p className="text-center text-sm text-red-400">{error}</p>
+                <p className="text-center text-sm text-destructive">{error}</p>
               )}
               <button type="submit" disabled={submitting} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70">
                 {submitting ? "Enviando..." : "Quero lotar minha agenda →"}
