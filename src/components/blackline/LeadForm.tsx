@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { WHATSAPP_URL, handleWhatsAppClick } from "@/lib/contact";
 
 const WEB3FORMS_ACCESS_KEY = "a35860a6-d63f-498f-85dd-dbafc9d8406f";
 
@@ -6,6 +7,25 @@ export function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Quando entra na tela de obrigado, dispara tracking de "page view" e ajusta URL/scroll.
+  useEffect(() => {
+    if (!submitted) return;
+    if (window.fbq) {
+      window.fbq('track', 'CompleteRegistration', { content_name: 'Página de obrigado' });
+    }
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'thank_you_view',
+        page_path: '/obrigado',
+        page_title: 'Obrigado | Black Line Agency',
+      });
+    }
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', '#obrigado');
+      window.scrollTo({ top: document.getElementById('contato')?.offsetTop ?? 0, behavior: 'smooth' });
+    }
+  }, [submitted]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,13 +71,24 @@ export function LeadForm() {
         <div className="reveal mt-10 rounded-3xl border border-border bg-surface/60 p-6 backdrop-blur md:p-10">
           {submitted ? (
             <div className="py-10 text-center">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gold-soft text-gold">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gold-soft text-gold">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="m5 13 4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="font-display text-2xl font-bold text-foreground">Recebemos seus dados!</h3>
-              <p className="mt-3 text-sm text-muted-foreground">A gente entra em contato em breve.</p>
+              <h3 className="font-display text-3xl font-bold text-foreground md:text-4xl">Obrigado! Recebemos seus dados.</h3>
+              <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground md:text-base">
+                Em breve nosso time entra em contato. Se quiser adiantar, fala com a gente direto no WhatsApp:
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleWhatsAppClick(WHATSAPP_URL, 'Obrigado - Falar no WhatsApp')}
+                className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
+              >
+                Falar no WhatsApp agora →
+              </a>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
