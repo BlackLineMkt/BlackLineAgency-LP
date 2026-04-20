@@ -1,4 +1,4 @@
-import { WHATSAPP_URL, trackWhatsAppClick } from "@/lib/contact";
+import { WHATSAPP_URL, handleWhatsAppClick } from "@/lib/contact";
 
 const stats = [
   { value: "R$12.000", label: "faturados por um estúdio parceiro no primeiro mês" },
@@ -26,7 +26,7 @@ export function Results() {
           ))}
         </div>
         <div className="reveal mt-12 text-center">
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick('Quero lotar minha agenda - Results')} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]">
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={handleWhatsAppClick(WHATSAPP_URL, 'Quero lotar minha agenda - Results')} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]">
             Quero lotar minha agenda →
           </a>
         </div>
