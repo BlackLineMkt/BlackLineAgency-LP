@@ -14,6 +14,7 @@ import { LeadForm } from "@/components/blackline/LeadForm";
 import { Footer } from "@/components/blackline/Footer";
 import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
 import { StickyMobileCta } from "@/components/blackline/StickyMobileCta";
+import { ExitIntentPopup } from "@/components/blackline/ExitIntentPopup";
 import { useReveal } from "@/hooks/use-reveal";
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
       <Footer />
       <FloatingWhatsApp />
       <StickyMobileCta />
+      <ExitIntentPopup />
     </div>
   );
 }
