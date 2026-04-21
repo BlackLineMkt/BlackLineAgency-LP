@@ -28,6 +28,44 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
+    <!-- Scroll Depth Tracking -->
+    <script>
+      (function () {
+        var milestones = [25, 50, 75, 100];
+        var fired = {};
+        function onScroll() {
+          var doc = document.documentElement;
+          var body = document.body;
+          var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+          var scrollHeight = Math.max(
+            body.scrollHeight, doc.scrollHeight,
+            body.offsetHeight, doc.offsetHeight,
+            body.clientHeight, doc.clientHeight
+          );
+          var winHeight = window.innerHeight || doc.clientHeight || 0;
+          var trackable = scrollHeight - winHeight;
+          if (trackable <= 0) return;
+          var percent = (scrollTop / trackable) * 100;
+          for (var i = 0; i < milestones.length; i++) {
+            var m = milestones[i];
+            if (!fired[m] && percent >= m) {
+              fired[m] = true;
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ event: 'scroll_depth', scroll_percent: m });
+              if (typeof window.fbq === 'function') {
+                window.fbq('trackCustom', 'ScrollDepth', { percent: m });
+              }
+            }
+          }
+          if (fired[100]) {
+            window.removeEventListener('scroll', onScroll);
+          }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+    </script>
+    <!-- End Scroll Depth Tracking -->
+
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
