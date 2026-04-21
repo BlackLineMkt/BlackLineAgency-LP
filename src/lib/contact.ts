@@ -4,6 +4,9 @@ const WHATSAPP_NUMBER = "5561994014479";
 
 export const trackWhatsAppClick = (buttonText: string) => {
   if (typeof window === 'undefined') return;
+  // Marca globalmente que o usuário já interagiu com algum CTA de WhatsApp,
+  // usado pelo Exit Intent Popup para não disparar nesses casos.
+  (window as unknown as { __whatsappClicked?: boolean }).__whatsappClicked = true;
   if (window.fbq) {
     window.fbq('track', 'Lead', { content_name: buttonText });
   }
