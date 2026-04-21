@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WHATSAPP_URL, WHATSAPP_PLAN_MESSAGES, buildWhatsAppUrl, handleWhatsAppClick } from "@/lib/contact";
 
 const plans = [
@@ -9,8 +9,46 @@ const plans = [
 
 export function Plans() {
   const [selected, setSelected] = useState("Black Line");
+  const sectionRef = useRef<HTMLElement>(null);
+  const viewedRef = useRef(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !viewedRef.current) {
+          viewedRef.current = true;
+          window.fbq?.('track', 'ViewContent', {
+            content_name: 'Planos Black Line',
+            content_category: 'pricing',
+          });
+          window.dataLayer?.push({ event: 'view_pricing' });
+        }
+      });
+    }, { threshold: 0.4 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const handlePlanClick = (planName: string, price: string) => {
+    setSelected(planName);
+    const value = Number(price.replace('.', ''));
+    window.fbq?.('track', 'InitiateCheckout', {
+      content_name: planName,
+      content_category: 'plan',
+      value,
+      currency: 'BRL',
+    });
+    window.dataLayer?.push({
+      event: 'initiate_checkout',
+      plan_name: planName,
+      plan_value: value,
+    });
+  };
+
   return (
-    <section id="planos" className="relative py-24 md:py-32">
+    <section id="planos" ref={sectionRef} className="relative py-24 md:py-32">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-radial-gold opacity-60" />
       <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         <div className="reveal mx-auto max-w-3xl text-center">
@@ -25,7 +63,7 @@ export function Plans() {
           {plans.map((p, i) => {
             const isSelected = selected === p.name;
             return (
-              <div key={p.name} className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 cursor-pointer ${isSelected ? "border-2 border-gold bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]" : "border border-border bg-surface/60 hover:border-gold/40"}`} style={{ transitionDelay: `${i * 80}ms` }} onClick={() => setSelected(p.name)}>
+              <div key={p.name} className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 cursor-pointer ${isSelected ? "border-2 border-gold bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]" : "border border-border bg-surface/60 hover:border-gold/40"}`} style={{ transitionDelay: `${i * 80}ms` }} onClick={() => handlePlanClick(p.name, p.price)}>
                 {p.highlight && <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-gold px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground shadow-gold">★ Mais escolhido</span>}
                 <h3 className="font-display text-2xl font-bold text-foreground">{p.name}</h3>
                 <div className="mt-5 flex items-baseline gap-1.5">
