@@ -133,7 +133,7 @@ export function ExitIntentPopup() {
             letterSpacing: "0.04em",
           }}
         >
-          Espera um segundo.
+          Antes de fechar essa aba...
         </h2>
         <p
           style={{
@@ -144,8 +144,12 @@ export function ExitIntentPopup() {
             marginBottom: "28px",
           }}
         >
-          Antes de sair — a gente atende poucos estúdios por vez pra garantir foco total em cada
-          cliente. Se o seu estúdio tem potencial, a conversa é rápida e sem compromisso.
+          Quantos clientes novos seu estúdio perdeu esse mês por falta de visibilidade? A gente
+          não trabalha com qualquer estúdio, escolhemos os que levam o jogo a sério. Se você
+          chegou até aqui, provavelmente se encaixa.
+          <br />
+          <br />
+          Uma conversa de 15 minutos pode mudar o jogo. Sem pitch, sem enrolação.
         </p>
         <a
           href={WHATSAPP_URL}
