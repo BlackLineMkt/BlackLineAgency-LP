@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { WHATSAPP_URL, handleWhatsAppClick } from "@/lib/contact";
+import { leadsSupabase, LEADS_STUDIO_ID } from "@/lib/leadsClient";
 
 const WEB3FORMS_ACCESS_KEY = "a35860a6-d63f-498f-85dd-dbafc9d8406f";
 
@@ -36,6 +37,23 @@ export function LeadForm() {
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
     formData.append("subject", "Novo lead - Black Line Agency");
     formData.append("from_name", "Black Line Agency - Site");
+
+    // Salva o lead no Supabase em paralelo. Falhas aqui NÃO devem bloquear
+    // o envio do email para o time — tratamos silenciosamente.
+    try {
+      const name = String(formData.get("name") ?? "");
+      const phone = String(formData.get("phone") ?? "");
+      await leadsSupabase.from("leads").insert({
+        studio_id: LEADS_STUDIO_ID,
+        name,
+        phone,
+        origin: "lp",
+        stage: "novo",
+        notes: "",
+      });
+    } catch {
+      // silencioso por design
+    }
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
