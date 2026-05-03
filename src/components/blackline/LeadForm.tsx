@@ -126,9 +126,6 @@ export function LeadForm() {
               >
                 Falar no WhatsApp agora
               </a>
-              >
-                Falar no WhatsApp agora;
-              </a>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
