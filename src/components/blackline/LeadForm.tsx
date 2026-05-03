@@ -9,7 +9,6 @@ export function LeadForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Quando entra na tela de obrigado, dispara tracking de "page view" e ajusta URL/scroll.
   useEffect(() => {
     if (!submitted) return;
     if (window.fbq) {
@@ -38,11 +37,15 @@ export function LeadForm() {
     formData.append("subject", "Novo lead - Black Line Agency");
     formData.append("from_name", "Black Line Agency - Site");
 
-    // Salva o lead no Supabase em paralelo. Falhas aqui NÃO devem bloquear
-    // o envio do email para o time — tratamos silenciosamente.
     try {
       const name = String(formData.get("name") ?? "");
       const phone = String(formData.get("phone") ?? "");
+      const studio = String(formData.get("studio") ?? "");
+      const instagram = String(formData.get("instagram") ?? "");
+      const state = String(formData.get("state") ?? "");
+      const email = String(formData.get("email") ?? "");
+
+      // Salva na tabela leads
       await leadsSupabase.from("leads").insert({
         studio_id: LEADS_STUDIO_ID,
         name,
@@ -50,6 +53,24 @@ export function LeadForm() {
         origin: "lp",
         stage: "novo",
         notes: "",
+      });
+
+      // Dispara a Edge Function que envia pro TattoFlow
+      await fetch("https://wzbfveszjumxshuatzzc.supabase.co/functions/v1/receive-lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          studio,
+          instagram,
+          state,
+          email,
+          origin: "lp",
+          studio_id: LEADS_STUDIO_ID,
+        }),
       });
     } catch {
       // silencioso por design
@@ -98,7 +119,7 @@ export function LeadForm() {
               <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground md:text-base">
                 Em breve nosso time entra em contato. Se quiser adiantar, fala com a gente direto no WhatsApp:
               </p>
-              <a
+              
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
