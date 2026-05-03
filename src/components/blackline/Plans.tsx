@@ -2,9 +2,53 @@ import { useEffect, useRef, useState } from "react";
 import { WHATSAPP_URL, WHATSAPP_PLAN_MESSAGES, buildWhatsAppUrl, handleWhatsAppClick } from "@/lib/contact";
 
 const plans = [
-  { name: "Starter", price: "1.500", features: ["Meta Ads", "Criativos", "Copy", "Relatório mensal"], cta: "Quero o Starter", highlight: false },
-  { name: "Black Line", price: "2.500", features: ["Tudo do Starter", "Google Ads", "CRM"], cta: "Quero o Black Line", highlight: true },
-  { name: "Full", price: "3.500", features: ["Tudo do Black Line", "Gestão de Google Meu Negócio", "Vídeo de apresentação mensal"], cta: "Quero o Full", highlight: false },
+  {
+    name: "Starter",
+    price: "1.500",
+    features: [
+      "Meta Ads — gestão completa de campanhas",
+      "4 criativos mensais com copy estratégica",
+      "Segmentação estratégica de públicos",
+      "Diagnóstico e otimização do Instagram",
+      "Automação básica do WhatsApp",
+      "Relatório mensal de resultados",
+    ],
+    cta: "Quero o Starter",
+    highlight: false,
+  },
+  {
+    name: "Black Line",
+    price: "2.500",
+    features: [
+      "Tudo do Starter",
+      "Google Ads — campanhas por intenção de busca",
+      "6 criativos mensais com copy estratégica",
+      "LP focada em conversão com identidade do estúdio",
+      "Integração da LP com o TattoFlow",
+      "CRM TattoFlow — kanban exclusivo para estúdios",
+      "Leads da LP entram automaticamente no CRM",
+      "Treinamento para uso do TattoFlow",
+    ],
+    cta: "Quero o Black Line",
+    highlight: true,
+  },
+  {
+    name: "Full",
+    price: "3.500",
+    features: [
+      "Tudo do Black Line",
+      "Site completo multi-página personalizado",
+      "LP entregue no onboarding — site em até 2 meses",
+      "Google Meu Negócio — otimização e gestão completa",
+      "Postagens semanais no Google Meu Negócio",
+      "Gestão e captação de avaliações",
+      "8 criativos mensais com copy estratégica",
+      "Relatório mensal em vídeo com plano de ação",
+      "Reporte semanal de mídia paga no grupo",
+    ],
+    cta: "Quero o Full",
+    highlight: false,
+  },
 ];
 
 export function Plans() {

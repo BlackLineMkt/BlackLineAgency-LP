@@ -17,7 +17,7 @@ const iconProps = {
 const services: Service[] = [
   {
     title: "Tráfego Pago",
-    desc: "Meta Ads e Google Ads com estratégia real.",
+    desc: "Meta Ads e Google Ads com estratégia real para encher a agenda do seu estúdio.",
     icon: (
       <svg {...iconProps}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 17 9 11l4 4 8-8" />
@@ -27,7 +27,7 @@ const services: Service[] = [
   },
   {
     title: "Criativos",
-    desc: "Linguagem autêntica do nicho tattoo.",
+    desc: "Artes e copies com linguagem autêntica do nicho tattoo — que convertem de verdade.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -39,8 +39,8 @@ const services: Service[] = [
     ),
   },
   {
-    title: "CRM",
-    desc: "Nenhum lead perdido, atendimento organizado.",
+    title: "CRM — TattoFlow",
+    desc: "CRM exclusivo para estúdios de tatuagem. Kanban de leads, histórico de atendimento e integração automática com sua LP. Nenhum lead perdido.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -52,8 +52,8 @@ const services: Service[] = [
     ),
   },
   {
-    title: "Funis",
-    desc: "Da atração ao agendamento fechado.",
+    title: "Funis de Vendas",
+    desc: "Estrutura completa da atração ao agendamento fechado — sem improvisar.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -65,9 +65,8 @@ const services: Service[] = [
     ),
   },
   {
-    title: "Landing Pages",
-    desc: "Conversão fora do Instagram.",
-    soon: true,
+    title: "Landing Pages & Sites",
+    desc: "LP focada em conversão ou site completo com múltiplas páginas — personalizado com a identidade do seu estúdio e integrado ao TattoFlow.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -79,8 +78,26 @@ const services: Service[] = [
     ),
   },
   {
+    title: "Google Meu Negócio",
+    desc: "Perfil otimizado, postagens semanais, gestão de avaliações e estratégia de presença local.",
+    icon: (
+      <svg {...iconProps}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+        />
+      </svg>
+    ),
+  },
+  {
     title: "IA no Atendimento",
-    desc: "Escala sem perder velocidade.",
+    desc: "Escala sem perder velocidade no atendimento dos seus leads.",
     soon: true,
     icon: (
       <svg {...iconProps}>
@@ -94,7 +111,7 @@ const services: Service[] = [
   },
   {
     title: "Treinamento de Atendimento",
-    desc: "Fechar mais com os leads que já chegam.",
+    desc: "Fechar mais com os leads que já chegam — sem depender só do volume.",
     soon: true,
     icon: (
       <svg {...iconProps}>
