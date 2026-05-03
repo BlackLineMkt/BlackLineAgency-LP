@@ -117,7 +117,7 @@ export function LeadForm() {
               <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground md:text-base">
                 Em breve nosso time entra em contato. Se quiser adiantar, fala com a gente direto no WhatsApp:
               </p>
-<a              <a
+<a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
