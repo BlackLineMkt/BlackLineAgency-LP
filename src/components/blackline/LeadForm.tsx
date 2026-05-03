@@ -53,11 +53,12 @@ export function LeadForm() {
         stage: "novo",
         notes: "",
       });
-
+      
       await fetch("https://wzbfveszjumxshuatzzc.supabase.co/functions/v1/receive-lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6YmZ2ZXN6anVteHNodWF0enpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNTExODMsImV4cCI6MjA5MjcyNzE4M30.pVCzQ59dG7K4gvdrDroZH1LLxZ0XqtqxOc9uH0gPPoU",
         },
         body: JSON.stringify({
           name,
