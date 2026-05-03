@@ -44,15 +44,6 @@ export function LeadForm() {
       const instagram = String(formData.get("instagram") ?? "");
       const state = String(formData.get("state") ?? "");
       const email = String(formData.get("email") ?? "");
-
-      await leadsSupabase.from("leads").insert({
-        studio_id: LEADS_STUDIO_ID,
-        name,
-        phone,
-        origin: "lp",
-        stage: "novo",
-        notes: "",
-      });
       
       await fetch("https://wzbfveszjumxshuatzzc.supabase.co/functions/v1/receive-lead", {
         method: "POST",
