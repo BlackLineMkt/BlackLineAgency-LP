@@ -45,7 +45,6 @@ export function LeadForm() {
       const state = String(formData.get("state") ?? "");
       const email = String(formData.get("email") ?? "");
 
-      // Salva na tabela leads
       await leadsSupabase.from("leads").insert({
         studio_id: LEADS_STUDIO_ID,
         name,
@@ -55,7 +54,6 @@ export function LeadForm() {
         notes: "",
       });
 
-      // Dispara a Edge Function que envia pro TattoFlow
       await fetch("https://wzbfveszjumxshuatzzc.supabase.co/functions/v1/receive-lead", {
         method: "POST",
         headers: {
@@ -126,7 +124,7 @@ export function LeadForm() {
                 onClick={handleWhatsAppClick(WHATSAPP_URL, 'Obrigado - Falar no WhatsApp')}
                 className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
               >
-                Falar no WhatsApp agora {'\u2192'}
+                Falar no WhatsApp agora &#8594;
               </a>
             </div>
           ) : (
@@ -193,7 +191,7 @@ export function LeadForm() {
                 <p className="text-center text-sm text-destructive">{error}</p>
               )}
               <button type="submit" disabled={submitting} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70">
-                {submitting ? "Enviando..." : "Quero lotar minha agenda \u2192"}
+                {submitting ? "Enviando..." : "Quero lotar minha agenda &#8594;"}
               </button>
               <p className="text-center text-xs text-muted-foreground/80">Seus dados ficam só com a gente. Sem spam.</p>
             </form>
