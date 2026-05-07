@@ -10,7 +10,6 @@ import { Results } from "@/components/blackline/Results";
 import { Testimonials } from "@/components/blackline/Testimonials";
 import { Faq } from "@/components/blackline/Faq";
 import { FinalCta } from "@/components/blackline/FinalCta";
-import { LeadForm } from "@/components/blackline/LeadForm";
 import { Footer } from "@/components/blackline/Footer";
 import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
 import { StickyMobileCta } from "@/components/blackline/StickyMobileCta";
@@ -33,8 +32,7 @@ export default function App() {
         <Results />
         <Testimonials />
         <Faq />
-        <LeadForm />
-        <FinalCta />
+<FinalCta />
       </main>
       <Footer />
       <FloatingWhatsApp />
