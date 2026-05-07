@@ -5,7 +5,7 @@ import { leadsSupabase, LEADS_STUDIO_ID } from "@/lib/leadsClient";
 
 interface LeadCaptureModalProps {
   onClose: () => void;
-  source: "hero" | "final_cta" | "plans";
+  source: string;
   planInterest?: string;
 }
 

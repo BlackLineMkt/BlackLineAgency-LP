@@ -1,4 +1,5 @@
-import { WHATSAPP_URL, handleWhatsAppClick } from "@/lib/contact";
+import { useState } from "react";
+import { LeadCaptureModal } from "./LeadCaptureModal";
 
 const items = [
   {
@@ -39,55 +40,63 @@ const items = [
 ];
 
 export function Problem() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <section className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <h2 className="reveal mx-auto max-w-3xl text-center font-display text-3xl font-bold leading-tight md:text-5xl">
-          Se você se identifica com algum desses,
-          <span className="block text-gradient-gold">
-            a gente precisa conversar.
-          </span>
-        </h2>
+    <>
+      <section className="relative py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <h2 className="reveal mx-auto max-w-3xl text-center font-display text-3xl font-bold leading-tight md:text-5xl">
+            Se você se identifica com algum desses,
+            <span className="block text-gradient-gold">
+              a gente precisa conversar.
+            </span>
+          </h2>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {items.map((it, i) => (
-            <div
-              key={i}
-              className="reveal group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-8 backdrop-blur transition-colors hover:border-gold/40"
-              style={{ transitionDelay: `${i * 60}ms` }}
-            >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gold-soft text-gold">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.6}
-                >
-                  {it.icon}
-                </svg>
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {items.map((it, i) => (
+              <div
+                key={i}
+                className="reveal group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-8 backdrop-blur transition-colors hover:border-gold/40"
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gold-soft text-gold">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={1.6}
+                  >
+                    {it.icon}
+                  </svg>
+                </div>
+                <p className="text-lg font-medium leading-snug text-foreground">
+                  {it.text}
+                </p>
+                <div className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-gold/5 opacity-0 blur-2xl transition-opacity group-hover:opacity-100" />
               </div>
-              <p className="text-lg font-medium leading-snug text-foreground">
-                {it.text}
-              </p>
-              <div className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-gold/5 opacity-0 blur-2xl transition-opacity group-hover:opacity-100" />
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="reveal mt-12 text-center">
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={handleWhatsAppClick(WHATSAPP_URL, 'Isso tem solução. Fala com a gente')}
-            className="text-sm font-medium text-gold underline-offset-4 hover:underline"
-          >
-            Isso tem solução. Fala com a gente →
-          </a>
+          <div className="reveal mt-12 text-center">
+            <button
+              onClick={() => setShowModal(true)}
+              className="text-sm font-medium text-gold underline-offset-4 hover:underline"
+            >
+              Isso tem solução. Fala com a gente →
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {showModal && (
+        <LeadCaptureModal
+          onClose={() => setShowModal(false)}
+          source="problem"
+        />
+      )}
+    </>
   );
 }
