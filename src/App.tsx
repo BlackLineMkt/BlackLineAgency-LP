@@ -11,7 +11,7 @@ import { Testimonials } from "@/components/blackline/Testimonials";
 import { Faq } from "@/components/blackline/Faq";
 import { FinalCta } from "@/components/blackline/FinalCta";
 import { Footer } from "@/components/blackline/Footer";
-import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
+// import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
 import { StickyMobileCta } from "@/components/blackline/StickyMobileCta";
 import { ExitIntentPopup } from "@/components/blackline/ExitIntentPopup";
 import { useReveal } from "@/hooks/use-reveal";
@@ -35,7 +35,7 @@ export default function App() {
 <FinalCta />
       </main>
       <Footer />
-      <FloatingWhatsApp />
+      {/* <FloatingWhatsApp /> */}
       <StickyMobileCta />
       <ExitIntentPopup />
     </div>
