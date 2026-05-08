@@ -117,15 +117,15 @@ export function Plans() {
               <div
                 key={p.name}
                 className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 cursor-pointer ${isSelected ? "border-2 border-gold bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]" : "border border-border bg-surface/60 hover:border-gold/40"}`}
-                style={{ transitionDelay: `${i * 80}ms` }}
+                style={{ transitionDelay: `${i * 80}ms`, borderTop: '3px solid var(--accent-red)' }}
                 onClick={() => handlePlanClick(p.name, p.price)}
               >
                 {p.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-gold px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground shadow-gold">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#BE1919] px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
                     ★ Mais escolhido
                   </span>
                 )}
-                <h3 className="font-display text-2xl font-bold text-foreground">{p.name}</h3>
+                <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Courier New', monospace", letterSpacing: '0.08em' }}>{p.name}</h3>
                 <div className="mt-5 flex items-baseline gap-1.5">
                   <span className="text-sm font-medium text-muted-foreground">R$</span>
                   <span className="font-display text-5xl font-bold text-foreground">{p.price}</span>

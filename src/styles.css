@@ -7,6 +7,7 @@
 @theme inline {
   --font-sans: "Inter", system-ui, sans-serif;
   --font-display: "Syne", system-ui, sans-serif;
+  --font-headline: "Playfair Display", Georgia, serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -36,6 +37,7 @@
   --color-ring: var(--ring);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
+  --color-accent-red: var(--accent-red);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
 }
@@ -55,11 +57,13 @@
   --popover: oklch(0.17 0 0);
   --popover-foreground: oklch(0.985 0 0);
 
-  /* Gold #c9a84c */
-  --gold: oklch(0.745 0.13 86);
-  --gold-soft: oklch(0.745 0.13 86 / 0.15);
+  /* Gold #C69A3B */
+  --gold: oklch(0.715 0.14 77);
+  --gold-soft: oklch(0.715 0.14 77 / 0.15);
 
-  --primary: oklch(0.745 0.13 86);
+  --accent-red: #BE1919;
+
+  --primary: oklch(0.715 0.14 77);
   --primary-foreground: oklch(0.13 0 0);
 
   --secondary: oklch(0.21 0 0);
@@ -68,7 +72,7 @@
   --muted: oklch(0.21 0 0);
   --muted-foreground: oklch(0.72 0 0);
 
-  --accent: oklch(0.745 0.13 86);
+  --accent: oklch(0.715 0.14 77);
   --accent-foreground: oklch(0.13 0 0);
 
   --destructive: oklch(0.6 0.22 25);
@@ -76,17 +80,17 @@
 
   --border: oklch(1 0 0 / 0.08);
   --input: oklch(1 0 0 / 0.12);
-  --ring: oklch(0.745 0.13 86);
+  --ring: oklch(0.715 0.14 77);
 
   /* Effects */
-  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.14 86), oklch(0.68 0.12 80));
+  --gradient-gold: linear-gradient(135deg, oklch(0.75 0.145 77), oklch(0.65 0.125 73));
   --gradient-radial-gold: radial-gradient(
     circle at 50% 0%,
-    oklch(0.745 0.13 86 / 0.18),
+    oklch(0.715 0.14 77 / 0.18),
     transparent 60%
   );
   --gradient-dark: linear-gradient(180deg, oklch(0.13 0 0), oklch(0.1 0 0));
-  --shadow-gold: 0 10px 40px -12px oklch(0.745 0.13 86 / 0.45);
+  --shadow-gold: 0 10px 40px -12px oklch(0.715 0.14 77 / 0.45);
   --shadow-elevated: 0 20px 60px -20px oklch(0 0 0 / 0.6);
 }
 
@@ -111,7 +115,11 @@
   }
 
   h1,
-  h2,
+  h2 {
+    font-family: var(--font-headline);
+    letter-spacing: -0.02em;
+  }
+
   h3,
   h4,
   h5 {
@@ -152,9 +160,19 @@
     background: linear-gradient(
       90deg,
       transparent,
-      oklch(0.745 0.13 86 / 0.6),
+      color-mix(in srgb, var(--accent-red) 60%, transparent),
       transparent
     );
+  }
+
+  /* Hero grain */
+  #top::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cfilter%20id%3D'n'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.65'%20numOctaves%3D'3'%20stitchTiles%3D'stitch'%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23n)'%2F%3E%3C%2Fsvg%3E");
+    opacity: 0.04;
+    pointer-events: none;
   }
 
   /* Reveal-on-scroll — uses data-revealed so React re-renders cannot wipe it */
