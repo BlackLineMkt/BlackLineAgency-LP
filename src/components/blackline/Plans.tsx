@@ -116,7 +116,7 @@ export function Plans() {
             return (
               <div
                 key={p.name}
-                className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 cursor-pointer ${isSelected ? "border-2 border-gold bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]" : "border border-border bg-surface/60 hover:border-gold/40"}`}
+                className={`reveal group relative flex flex-col overflow-visible rounded-3xl p-8 text-left backdrop-blur transition-all duration-300 cursor-pointer ${isSelected ? "border-2 border-[#BE1919] bg-surface shadow-gold lg:-translate-y-3 lg:scale-[1.03]" : "border border-[#BE1919] bg-surface/60"}`}
                 style={{ transitionDelay: `${i * 80}ms`, borderTop: '3px solid var(--accent-red)' }}
                 onClick={() => handlePlanClick(p.name, p.price)}
               >
