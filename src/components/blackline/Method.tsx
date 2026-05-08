@@ -17,7 +17,7 @@ export function Method() {
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <div className="reveal mx-auto max-w-3xl text-center">
             <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">O Método Black Line</span>
-            <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
+            <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
               Um processo.
               <span className="text-gradient-gold"> Não uma tentativa.</span>
             </h2>

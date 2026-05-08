@@ -15,7 +15,7 @@ export function FinalCta() {
       <div className="relative mx-auto max-w-3xl px-5 text-center md:px-8">
         <div className="reveal mx-auto h-px w-32 gold-divider" />
 
-        <h2 className="reveal mt-8 font-display text-4xl font-bold leading-tight md:text-6xl">
+        <h2 className="reveal mt-8 font-headline text-4xl font-bold leading-tight md:text-6xl">
           Pronto pra
           <span className="block text-gradient-gold">lotar sua agenda?</span>
         </h2>

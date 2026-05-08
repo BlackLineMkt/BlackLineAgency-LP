@@ -133,6 +133,10 @@
     font-family: var(--font-display);
   }
 
+  .font-headline {
+    font-family: var(--font-headline);
+  }
+
   .text-gradient-gold {
     background: var(--gradient-gold);
     -webkit-background-clip: text;

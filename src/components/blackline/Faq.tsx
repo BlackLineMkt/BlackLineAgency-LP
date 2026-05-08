@@ -41,7 +41,7 @@ export function Faq() {
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">
             FAQ
           </span>
-          <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
+          <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
             Perguntas <span className="text-gradient-gold">frequentes</span>
           </h2>
         </div>

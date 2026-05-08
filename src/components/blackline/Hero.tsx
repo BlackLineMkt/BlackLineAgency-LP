@@ -22,7 +22,7 @@ export function Hero() {
             Especialistas em estúdios de tatuagem
           </span>
 
-          <h1 className="mt-7 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+          <h1 className="mt-7 font-headline text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
             Seu estúdio merece uma
             <span className="block text-gradient-gold">agenda lotada.</span>
             <span className="block text-foreground">

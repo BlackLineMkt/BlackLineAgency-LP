@@ -46,7 +46,7 @@ export function About() {
           <span className="reveal text-xs font-medium uppercase tracking-[0.22em] text-gold">
             Quem somos
           </span>
-          <h2 className="reveal mx-auto mt-5 max-w-4xl font-display text-3xl font-bold leading-tight md:text-5xl">
+          <h2 className="reveal mx-auto mt-5 max-w-4xl font-headline text-3xl font-bold leading-tight md:text-5xl">
             Não somos uma agência.
             <span className="block text-gradient-gold">
               Somos o ecossistema completo do seu estúdio.

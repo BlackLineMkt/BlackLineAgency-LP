@@ -88,7 +88,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
               <span className="text-xs font-medium uppercase tracking-[0.18em] text-gold">
                 {planInterest ? `Plano ${planInterest}` : "Primeiros passos"}
               </span>
-              <h2 className="mt-3 font-display text-2xl font-bold text-foreground">
+              <h2 className="mt-3 font-headline text-2xl font-bold text-foreground">
                 {planInterest ? "Ótima escolha! Vamos começar?" : "Vamos lotar sua agenda?"}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -149,7 +149,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gold/10 text-3xl">
               🎉
             </div>
-            <h2 className="font-display text-2xl font-bold text-foreground">
+            <h2 className="font-headline text-2xl font-bold text-foreground">
               Recebemos seu contato!
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

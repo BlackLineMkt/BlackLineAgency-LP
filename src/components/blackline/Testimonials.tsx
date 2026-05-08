@@ -22,7 +22,7 @@ export function Testimonials() {
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">
             Depoimentos
           </span>
-          <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
+          <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
             O que estúdios{" "}
             <span className="text-gradient-gold">falam da gente</span>
           </h2>

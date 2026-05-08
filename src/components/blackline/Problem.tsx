@@ -46,7 +46,7 @@ export function Problem() {
     <>
       <section className="relative py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
-          <h2 className="reveal mx-auto max-w-3xl text-center font-display text-3xl font-bold leading-tight md:text-5xl">
+          <h2 className="reveal mx-auto max-w-3xl text-center font-headline text-3xl font-bold leading-tight md:text-5xl">
             Se você se identifica com algum desses,
             <span className="block text-gradient-gold">
               a gente precisa conversar.

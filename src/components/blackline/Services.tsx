@@ -135,7 +135,7 @@ export function Services() {
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">
             Serviços
           </span>
-          <h2 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
+          <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
             O que <span className="text-gradient-gold">entregamos</span>
           </h2>
         </div>
