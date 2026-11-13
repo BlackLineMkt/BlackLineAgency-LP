@@ -14,12 +14,14 @@ import { Footer } from "@/components/blackline/Footer";
 // import { FloatingWhatsApp } from "@/components/blackline/FloatingWhatsApp";
 import { StickyMobileCta } from "@/components/blackline/StickyMobileCta";
 import { ExitIntentPopup } from "@/components/blackline/ExitIntentPopup";
+import { Tentacles } from "@/components/blackline/Tentacles";
 import { useReveal } from "@/hooks/use-reveal";
 
 export default function App() {
   useReveal();
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative isolate min-h-screen bg-background text-foreground">
+      <Tentacles />
       <Navbar />
       <main>
         <Hero />
@@ -32,7 +34,7 @@ export default function App() {
         <Results />
         <Testimonials />
         <Faq />
-<FinalCta />
+        <FinalCta />
       </main>
       <Footer />
       {/* <FloatingWhatsApp /> */}
