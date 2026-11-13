@@ -25,7 +25,7 @@ Alternativas descartadas: imagem pronta (pesada, ondulação difícil) e canvas/
 ## Posicionamento
 
 - Camada `absolute`, `inset-y-0` na altura total da página, com `pointer-events: none`, `aria-hidden="true"` e `overflow: hidden` (sem scroll horizontal).
-- Atrás do conteúdo: `z-index` baixo, sem nunca cobrir texto ou botões. O contêiner principal precisa de `relative` para ancorar a camada.
+- Atrás do conteúdo: `z-index` baixo, sem nunca cobrir texto ou botões. O wrapper do `App` precisa ser `relative isolate`: `relative` ancora a camada e `isolate` cria o contexto de empilhamento que permite usar `-z-10` sem esconder a camada atrás do fundo.
 - 3 a 4 tentáculos por lado, em alturas diferentes, alguns espelhados, para dar a sensação de subirem pela página.
 
 ## Visual
@@ -37,7 +37,7 @@ Alternativas descartadas: imagem pronta (pesada, ondulação difícil) e canvas/
 
 ## Movimento
 
-- `@keyframes` em `src/styles.css`, 8–14s por ciclo, com defasagem (`animation-delay`) entre tentáculos, usando `transform` (`rotate`/`translate`) para ficar na GPU.
+- `@keyframes` em `src/components/blackline/tentacles.css` (importado pelo componente, para não misturar com o `styles.css`), 8–14s por ciclo, com defasagem (`animation-delay`) entre tentáculos, usando `transform` (`rotate`/`translate`) para ficar na GPU.
 - `@media (prefers-reduced-motion: reduce)` desliga a animação.
 
 ## Celular (< 768px)
