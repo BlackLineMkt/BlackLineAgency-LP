@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import "./tentacles.css";
 
 // Contorno do tentáculo (viewBox 160x1000): borda externa subindo, ponta, borda interna descendo.
@@ -58,7 +59,7 @@ function Tentacle({ side, top, duration, delay }: Placement) {
           {
             "--sway-duration": `${duration}s`,
             "--sway-delay": `${delay}s`,
-          } as React.CSSProperties
+          } as CSSProperties
         }
       >
         <svg className="tentacle-shape" viewBox="0 0 160 1000" focusable="false">
