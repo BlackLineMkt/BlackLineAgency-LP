@@ -4,6 +4,9 @@ import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { leadsSupabase, LEADS_STUDIO_ID } from "@/lib/leadsClient";
 
+// Chave pública do Web3Forms: envia o aviso de novo lead para o e-mail da agência.
+const WEB3FORMS_ACCESS_KEY = "a35860a6-d63f-498f-85dd-dbafc9d8406f";
+
 interface LeadCaptureModalProps {
   onClose: () => void;
   source: string;
@@ -67,16 +70,43 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
 
     setLoading(true);
     try {
-      const { error: insertError } = await leadsSupabase.from("leads").insert({
-        name: name.trim(),
-        phone: rawPhone,
-        origin: "lp",
-        stage: "novo",
-        studio_id: LEADS_STUDIO_ID,
-        ...(planInterest ? { plan_interest: planInterest } : {}),
-      });
+      // Grava no CRM e avisa por e-mail em paralelo: se um falhar, o outro ainda garante o lead.
+      const [crm, email] = await Promise.allSettled([
+        leadsSupabase
+          .from("leads")
+          .insert({
+            name: name.trim(),
+            phone: rawPhone,
+            origin: "lp",
+            stage: "novo",
+            studio_id: LEADS_STUDIO_ID,
+            ...(planInterest ? { plan_interest: planInterest } : {}),
+          })
+          .then(({ error: insertError }) => {
+            if (insertError) throw insertError;
+          }),
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: "Novo lead - Black Line Agency",
+            from_name: "Black Line Agency - Site",
+            name: name.trim(),
+            phone,
+            plano: planInterest ?? "não informado",
+            origem: source,
+            botcheck: "",
+          }),
+        }).then(async (res) => {
+          const data = await res.json();
+          if (!data.success) throw new Error("web3forms");
+        }),
+      ]);
 
-      if (insertError) throw insertError;
+      if (crm.status === "rejected" && email.status === "rejected") {
+        throw new Error("lead não enviado");
+      }
 
       window.fbq?.("track", "Lead", { content_name: source });
       window.dataLayer?.push({ event: "lead_captured", source });
