@@ -48,7 +48,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
       const { error: insertError } = await leadsSupabase.from("leads").insert({
         name: name.trim(),
         phone: rawPhone,
-        origin: "landing_page",
+        origin: "lp",
         stage: "novo",
         studio_id: LEADS_STUDIO_ID,
         ...(planInterest ? { plan_interest: planInterest } : {}),
