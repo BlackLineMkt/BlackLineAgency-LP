@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { leadsSupabase, LEADS_STUDIO_ID } from "@/lib/leadsClient";
 
@@ -17,6 +18,18 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  // Renderiza no <body> (portal): ancestrais com transform/backdrop-filter quebram
+  // o position:fixed e descentralizam o modal. Também trava a rolagem do fundo.
+  useEffect(() => {
+    setMounted(true);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
 
   function formatPhone(value: string) {
     const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -67,14 +80,17 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
     }
   }
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+  if (!mounted) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-50 h-[100dvh] overflow-y-auto overscroll-contain">
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-md rounded-2xl border border-border bg-surface p-8 shadow-2xl">
+      <div className="relative flex min-h-full items-center justify-center p-4">
+      <div className="relative w-full max-w-md rounded-2xl border border-border bg-surface p-6 shadow-2xl sm:p-8">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-muted-foreground transition-colors hover:text-foreground"
@@ -109,8 +125,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                   value={name}
                   onChange={e => setName(e.target.value)}
                   placeholder="João Silva"
-                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
-                  autoFocus
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
                 />
               </div>
 
@@ -123,7 +138,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                   value={phone}
                   onChange={handlePhoneChange}
                   placeholder="(11) 99999-9999"
-                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
                 />
               </div>
 
@@ -167,6 +182,8 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </div>,
+    document.body,
   );
 }
