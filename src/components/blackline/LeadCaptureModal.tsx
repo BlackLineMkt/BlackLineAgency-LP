@@ -18,16 +18,25 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [mounted, setMounted] = useState(false);
+  // Área realmente visível (muda com a barra do navegador e o teclado no celular).
+  const [vv, setVv] = useState<{ top: number; height: number } | null>(null);
 
-  // Renderiza no <body> (portal): ancestrais com transform/backdrop-filter quebram
-  // o position:fixed e descentralizam o modal. Também trava a rolagem do fundo.
+  // Trava a rolagem do fundo e acompanha o visualViewport: com o teclado aberto o iOS
+  // não redimensiona o layout, então centralizamos na área visível.
   useEffect(() => {
-    setMounted(true);
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const v = window.visualViewport;
+    const sync = () => {
+      if (v) setVv({ top: v.offsetTop, height: v.height });
+    };
+    sync();
+    v?.addEventListener("resize", sync);
+    v?.addEventListener("scroll", sync);
     return () => {
       document.body.style.overflow = prev;
+      v?.removeEventListener("resize", sync);
+      v?.removeEventListener("scroll", sync);
     };
   }, []);
 
@@ -80,10 +89,14 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
     }
   }
 
-  if (!mounted) return null;
+  // Portal no <body>: ancestrais com transform/backdrop-filter quebram o position:fixed.
+  if (typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 h-[100dvh] overflow-y-auto overscroll-contain">
+    <div
+      className="fixed inset-x-0 top-0 z-[10000] h-[100dvh] overflow-y-auto overscroll-contain"
+      style={vv ? { top: vv.top, height: vv.height } : undefined}
+    >
       <div
         className="fixed inset-0 bg-black/70 backdrop-blur-sm"
         onClick={onClose}
@@ -125,6 +138,8 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                   value={name}
                   onChange={e => setName(e.target.value)}
                   placeholder="João Silva"
+                  autoFocus
+                  autoComplete="name"
                   className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
                 />
               </div>

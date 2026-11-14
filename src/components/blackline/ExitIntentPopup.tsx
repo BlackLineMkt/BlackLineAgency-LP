@@ -77,12 +77,14 @@ export function ExitIntentPopup() {
           style={{
             position: "fixed",
             inset: 0,
+            height: "100dvh",
+            overflowY: "auto",
             backgroundColor: "rgba(0, 0, 0, 0.85)",
             zIndex: 9999,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "20px",
+            padding: "16px",
           }}
         >
           <div
@@ -92,9 +94,10 @@ export function ExitIntentPopup() {
               backgroundColor: "#0B0B0B",
               border: "1px solid #C69A3B",
               borderRadius: "8px",
-              padding: "40px",
-              width: "90%",
+              padding: "clamp(24px, 6vw, 40px)",
+              width: "100%",
               maxWidth: "480px",
+              margin: "auto",
               boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 40px -10px rgba(198,154,59,0.25)",
             }}
           >
@@ -124,7 +127,8 @@ export function ExitIntentPopup() {
                 color: "#C69A3B",
                 textTransform: "uppercase",
                 fontWeight: 700,
-                fontSize: "22px",
+                fontSize: "clamp(20px, 5.5vw, 24px)",
+                paddingRight: "28px",
                 margin: 0,
                 marginBottom: "16px",
                 letterSpacing: "0.04em",
@@ -135,7 +139,7 @@ export function ExitIntentPopup() {
             <p
               style={{
                 color: "#ffffff",
-                fontSize: "15px",
+                fontSize: "16px",
                 lineHeight: 1.55,
                 margin: 0,
                 marginBottom: "28px",
@@ -160,8 +164,8 @@ export function ExitIntentPopup() {
                 color: "#0B0B0B",
                 textTransform: "uppercase",
                 fontWeight: 700,
-                fontSize: "14px",
-                padding: "14px 20px",
+                fontSize: "15px",
+                padding: "16px 20px",
                 borderRadius: "6px",
                 border: "none",
                 cursor: "pointer",
