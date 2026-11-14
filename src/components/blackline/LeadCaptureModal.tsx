@@ -27,6 +27,11 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
   // Trava a rolagem do fundo e acompanha o visualViewport: com o teclado aberto o iOS
   // não redimensiona o layout, então centralizamos na área visível.
   useEffect(() => {
+    window.dataLayer?.push({
+      event: "lead_form_open",
+      lead_source: source,
+      plan_name: planInterest ?? "none",
+    });
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const v = window.visualViewport;
@@ -105,11 +110,16 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
       ]);
 
       if (crm.status === "rejected" && email.status === "rejected") {
+        window.dataLayer?.push({ event: "lead_form_error", lead_source: source });
         throw new Error("lead não enviado");
       }
 
       window.fbq?.("track", "Lead", { content_name: source });
-      window.dataLayer?.push({ event: "lead_captured", source });
+      window.dataLayer?.push({
+        event: "lead_captured",
+        lead_source: source,
+        plan_name: planInterest ?? "none",
+      });
 
       setStep("success");
     } catch {
