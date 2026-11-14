@@ -17,8 +17,12 @@ export function Results() {
           <div className="reveal mx-auto max-w-3xl text-center">
             <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">Resultados</span>
             <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
-              Números reais <span className="text-gradient-gold">do nicho</span>
+              Resultados de marketing
+              <span className="text-gradient-gold"> em estúdios de tatuagem.</span>
             </h2>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground md:text-base">
+              Cada caso tem seu contexto, e resultados anteriores não garantem resultados futuros.
+            </p>
           </div>
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {stats.map((s, i) => (

@@ -16,16 +16,17 @@ const testimonials = [
 export function Testimonials() {
   return (
     <section className="relative py-24 md:py-32">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-radial-gold opacity-50" />
       <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         <div className="reveal mx-auto max-w-3xl text-center">
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">
             Depoimentos
           </span>
           <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
-            O que estúdios{" "}
-            <span className="text-gradient-gold">falam da gente</span>
+            O que estúdios de tatuagem <span className="text-gradient-gold">falam da gente.</span>
           </h2>
+          <p className="mt-6 text-sm leading-relaxed text-muted-foreground md:text-base">
+            Resultados anteriores não garantem resultados futuros.
+          </p>
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">

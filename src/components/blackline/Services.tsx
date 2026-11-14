@@ -16,8 +16,8 @@ const iconProps = {
 
 const services: Service[] = [
   {
-    title: "Tráfego Pago",
-    desc: "Meta Ads e Google Ads com estratégia real para encher a agenda do seu estúdio.",
+    title: "Gestão de Tráfego Pago",
+    desc: "Gestão de tráfego para estúdios de tatuagem: Meta Ads e Google Ads com estratégia real para encher a agenda do seu estúdio.",
     icon: (
       <svg {...iconProps}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 17 9 11l4 4 8-8" />
@@ -26,8 +26,8 @@ const services: Service[] = [
     ),
   },
   {
-    title: "Criativos",
-    desc: "Artes e copies com linguagem autêntica do nicho tattoo — que convertem de verdade.",
+    title: "Criativos e Anúncios",
+    desc: "Artes e copies para anúncios de tatuadores, com linguagem autêntica do nicho tattoo, que convertem de verdade.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -39,7 +39,7 @@ const services: Service[] = [
     ),
   },
   {
-    title: "CRM — TattoFlow",
+    title: "CRM TattoFlow para Estúdios de Tatuagem",
     desc: "CRM exclusivo para estúdios de tatuagem. Kanban de leads, histórico de atendimento e integração automática com sua LP. Nenhum lead perdido.",
     icon: (
       <svg {...iconProps}>
@@ -53,7 +53,7 @@ const services: Service[] = [
   },
   {
     title: "Funis de Vendas",
-    desc: "Estrutura completa da atração ao agendamento fechado — sem improvisar.",
+    desc: "Funil de vendas para estúdios de tatuagem: estrutura completa da atração ao agendamento fechado, sem improvisar.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -66,7 +66,7 @@ const services: Service[] = [
   },
   {
     title: "Landing Pages & Sites",
-    desc: "LP focada em conversão ou site completo com múltiplas páginas — personalizado com a identidade do seu estúdio e integrado ao TattoFlow.",
+    desc: "Landing page para tatuadores focada em conversão ou site completo com múltiplas páginas, personalizado com a identidade do seu estúdio e integrado ao TattoFlow.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -79,7 +79,7 @@ const services: Service[] = [
   },
   {
     title: "Google Meu Negócio",
-    desc: "Perfil otimizado, postagens semanais, gestão de avaliações e estratégia de presença local.",
+    desc: "Google Meu Negócio para estúdios de tatuagem: perfil otimizado, postagens semanais, gestão de avaliações e estratégia de presença local.",
     icon: (
       <svg {...iconProps}>
         <path
@@ -111,7 +111,7 @@ const services: Service[] = [
   },
   {
     title: "Treinamento de Atendimento",
-    desc: "Fechar mais com os leads que já chegam — sem depender só do volume.",
+    desc: "Fechar mais com os leads que já chegam, sem depender só do volume.",
     soon: true,
     icon: (
       <svg {...iconProps}>
@@ -136,7 +136,8 @@ export function Services() {
             Serviços
           </span>
           <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
-            O que <span className="text-gradient-gold">entregamos</span>
+            Marketing digital para estúdios de tatuagem:
+            <span className="text-gradient-gold"> o que entregamos.</span>
           </h2>
         </div>
 
@@ -147,7 +148,7 @@ export function Services() {
               className={`reveal group relative overflow-hidden rounded-2xl border p-6 backdrop-blur transition-all ${
                 s.soon
                   ? "border-border/60 bg-surface/30"
-                  : "border-border bg-surface/60 hover:border-gold/40 hover:bg-surface"
+                  : "border-border bg-surface/60 hover:border-amber/60 hover:bg-surface"
               }`}
               style={{ transitionDelay: `${i * 50}ms` }}
             >

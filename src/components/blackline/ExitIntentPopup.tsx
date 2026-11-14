@@ -89,19 +89,20 @@ export function ExitIntentPopup() {
             onClick={(e) => e.stopPropagation()}
             style={{
               position: "relative",
-              backgroundColor: "#0a0a0a",
-              border: "1px solid #C9A84C",
+              backgroundColor: "#0B0B0B",
+              border: "1px solid #C69A3B",
               borderRadius: "8px",
               padding: "40px",
               width: "90%",
               maxWidth: "480px",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 40px -10px rgba(198,154,59,0.25)",
             }}
           >
             <button
               type="button"
               onClick={handleClose}
               aria-label="Fechar"
+              className="transition-colors hover:!text-[#C69A3B]"
               style={{
                 position: "absolute",
                 top: "12px",
@@ -120,7 +121,7 @@ export function ExitIntentPopup() {
             <h2
               id="exit-intent-title"
               style={{
-                color: "#C9A84C",
+                color: "#C69A3B",
                 textTransform: "uppercase",
                 fontWeight: 700,
                 fontSize: "22px",
@@ -150,12 +151,13 @@ export function ExitIntentPopup() {
             <button
               type="button"
               onClick={handleCtaClick}
+              className="transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-amber"
               style={{
                 display: "block",
                 width: "100%",
                 textAlign: "center",
-                backgroundColor: "#C9A84C",
-                color: "#0a0a0a",
+                backgroundColor: "#C69A3B",
+                color: "#0B0B0B",
                 textTransform: "uppercase",
                 fontWeight: 700,
                 fontSize: "14px",

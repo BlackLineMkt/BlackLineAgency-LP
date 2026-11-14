@@ -1,3 +1,4 @@
+import { Instagram } from "lucide-react";
 import { CONTACT_EMAIL, INSTAGRAM } from "@/lib/contact";
 import { Logo } from "./Logo";
 
@@ -9,23 +10,22 @@ export function Footer() {
           <div className="flex flex-col items-center gap-3 md:items-start">
             <Logo />
             <p className="text-xs text-muted-foreground">
-              Especialistas em estúdios de tatuagem
+              Agência de marketing para estúdios de tatuagem
             </p>
           </div>
 
           <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground md:items-end">
             <a
-              href="https://instagram.com/blackline.mkt"
+              href="https://www.instagram.com/blackline.mkt/"
               target="_blank"
               rel="noreferrer"
-              className="transition-colors hover:text-gold"
+              aria-label="Instagram da Black Line"
+              className="inline-flex items-center gap-2 transition-colors hover:text-amber"
             >
+              <Instagram className="h-4 w-4" aria-hidden="true" />
               {INSTAGRAM}
             </a>
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="transition-colors hover:text-gold"
-            >
+            <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-amber">
               {CONTACT_EMAIL}
             </a>
           </div>

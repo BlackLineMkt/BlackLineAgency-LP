@@ -2,12 +2,36 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "A verba de anúncios está inclusa?",
+    q: "Como funciona uma agência de marketing para estúdios de tatuagem?",
+    a: "Cuidamos da estrutura que traz clientes para o estúdio: tráfego pago, criativos, funil, landing page e CRM, conforme o plano contratado. Primeiro arrumamos perfil, atendimento e base, depois atraímos o lead certo, convertemos em agendamento e otimizamos com dados reais todo mês.",
+  },
+  {
+    q: "Como conseguir mais clientes para meu estúdio de tatuagem?",
+    a: "Combinando anúncios com linguagem do nicho, um funil que leva o interessado até o agendamento e um CRM para organizar os contatos. Atrair gente não basta: é preciso converter e acompanhar cada lead.",
+  },
+  {
+    q: "Quanto custa contratar uma agência de marketing para tatuadores?",
+    a: "Os planos da Black Line são Starter (R$1.500/mês), Black Line (R$2.500/mês) e Full (R$3.500/mês). A verba de anúncios não está inclusa e fica direto com você na plataforma. Os entregáveis de cada plano estão na seção Planos.",
+  },
+  {
+    q: "Como funciona o tráfego pago para estúdios de tatuagem?",
+    a: "Os anúncios rodam no Meta Ads e, conforme o plano, no Google Ads. Usamos criativos com a linguagem do nicho para levar o interessado até a sua landing page e ao atendimento, com acompanhamento e ajustes contínuos.",
+  },
+  {
+    q: "O que é o CRM TattoFlow?",
+    a: "É o CRM exclusivo da Black Line para estúdios de tatuagem, incluído nos planos Black Line e Full. Ele organiza os leads em kanban, guarda o histórico de atendimento e recebe automaticamente os leads da sua landing page.",
+  },
+  {
+    q: "O investimento em anúncios está incluso na mensalidade?",
     a: "Não. A verba fica direto com você na plataforma, com controle total.",
   },
   {
     q: "Quanto tempo leva pra ver resultado?",
     a: "30 a 60 dias pro funil otimizar. No primeiro mês estrutura e testa, no segundo otimiza, no terceiro resultado consistente.",
+  },
+  {
+    q: "A Black Line atende estúdios de tatuagem de todo o Brasil?",
+    a: "Sim. Atendemos estúdios de tatuagem e tatuadores de todo o Brasil que já têm operação comercial e querem escalar.",
   },
   {
     q: "Vocês atendem qualquer estúdio?",
@@ -42,7 +66,8 @@ export function Faq() {
             FAQ
           </span>
           <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
-            Perguntas <span className="text-gradient-gold">frequentes</span>
+            Perguntas frequentes{" "}
+            <span className="text-gradient-gold">sobre marketing para estúdios de tatuagem.</span>
           </h2>
         </div>
 
@@ -53,11 +78,13 @@ export function Faq() {
               <div
                 key={i}
                 className={`reveal overflow-hidden rounded-2xl border bg-surface/60 backdrop-blur transition-colors ${
-                  isOpen ? "border-gold/40" : "border-border"
+                  isOpen ? "border-amber/50" : "border-border"
                 }`}
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${i}`}
                   className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left"
                 >
                   <span className="font-display text-[15px] font-semibold text-foreground md:text-lg">
@@ -66,7 +93,7 @@ export function Faq() {
                   <span
                     className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all ${
                       isOpen
-                        ? "rotate-45 border-gold bg-gold-soft text-gold"
+                        ? "rotate-45 border-amber bg-amber/15 text-amber"
                         : "border-border text-muted-foreground"
                     }`}
                   >
@@ -87,6 +114,7 @@ export function Faq() {
                   </span>
                 </button>
                 <div
+                  id={`faq-panel-${i}`}
                   className={`grid transition-all duration-300 ${
                     isOpen
                       ? "grid-rows-[1fr] opacity-100"

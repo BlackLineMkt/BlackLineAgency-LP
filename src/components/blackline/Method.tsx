@@ -18,8 +18,11 @@ export function Method() {
           <div className="reveal mx-auto max-w-3xl text-center">
             <span className="text-xs font-medium uppercase tracking-[0.22em] text-gold">O Método Black Line</span>
             <h2 className="mt-5 font-headline text-3xl font-bold leading-tight md:text-5xl">
-              Um processo.
-              <span className="text-gradient-gold"> Não uma tentativa.</span>
+              Método Black Line:
+              <span className="text-gradient-gold">
+                {" "}
+                um processo de marketing, não uma tentativa.
+              </span>
             </h2>
           </div>
           <div className="relative mt-16">

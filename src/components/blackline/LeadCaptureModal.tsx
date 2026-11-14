@@ -74,7 +74,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-md rounded-2xl border border-border bg-[#111111] p-8 shadow-2xl">
+      <div className="relative w-full max-w-md rounded-2xl border border-border bg-surface p-8 shadow-2xl">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-muted-foreground transition-colors hover:text-foreground"
@@ -93,7 +93,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {planInterest
-                  ? `Você escolheu o plano ${planInterest} — preencha seus dados e entraremos em contato para dar os próximos passos.`
+                  ? `Você escolheu o plano ${planInterest}. Preencha seus dados e entraremos em contato para dar os próximos passos.`
                   : "Preencha seus dados e entraremos em contato em breve para uma conversa sem compromisso."
                 }
               </p>
@@ -109,7 +109,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                   value={name}
                   onChange={e => setName(e.target.value)}
                   placeholder="João Silva"
-                  className="w-full rounded-lg border border-border bg-[#0D0D0D] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-gold focus:outline-none transition-colors"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
                   autoFocus
                 />
               </div>
@@ -123,7 +123,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                   value={phone}
                   onChange={handlePhoneChange}
                   placeholder="(11) 99999-9999"
-                  className="w-full rounded-lg border border-border bg-[#0D0D0D] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-gold focus:outline-none transition-colors"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
                 />
               </div>
 
@@ -160,7 +160,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
             </p>
             <button
               onClick={onClose}
-              className="mt-8 w-full rounded-full border border-border py-3 text-sm font-medium text-muted-foreground transition-colors hover:border-gold/40 hover:text-foreground"
+              className="mt-8 w-full rounded-full border border-border py-3 text-sm font-medium text-muted-foreground transition-colors hover:border-amber/60 hover:text-amber"
             >
               Fechar
             </button>

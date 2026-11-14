@@ -1,17 +1,15 @@
 "use client";
 import { useState } from "react";
+import { vagasMensagem } from "@/config/availability";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { LeadCaptureModal } from "./LeadCaptureModal";
 
 export function FinalCta() {
   const [showModal, setShowModal] = useState(false);
+  const vagasFinal = vagasMensagem("final");
 
   return (
     <section className="relative overflow-hidden py-28 md:py-36">
-      <div className="pointer-events-none absolute inset-0 bg-radial-gold" />
-      <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
-
       <div className="relative mx-auto max-w-3xl px-5 text-center md:px-8">
         <div className="reveal mx-auto h-px w-32 gold-divider" />
 
@@ -34,17 +32,17 @@ export function FinalCta() {
           </button>
         </div>
 
-        <p className="reveal mt-6 text-[13px] font-medium text-gold/80">
-          ⚡ Restam apenas 8 vagas para este mês
-        </p>
-        <p className="reveal mt-2 text-xs text-muted-foreground/70">
+        {vagasFinal && (
+          <p className="reveal mt-6 text-[13px] font-medium text-gold/80">⚡ {vagasFinal}</p>
+        )}
+        <p className={`reveal ${vagasFinal ? "mt-2" : "mt-6"} text-xs text-muted-foreground/70`}>
           Mínimo de 3 meses, porque resultado de verdade precisa desse tempo.
         </p>
         <p className="reveal mt-10 text-sm text-muted-foreground">
           ou{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="text-foreground underline-offset-4 hover:text-gold hover:underline"
+            className="text-foreground underline-offset-4 hover:text-amber hover:underline"
           >
             {CONTACT_EMAIL}
           </a>

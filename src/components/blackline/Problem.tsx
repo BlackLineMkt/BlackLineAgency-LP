@@ -57,7 +57,7 @@ export function Problem() {
             {items.map((it, i) => (
               <div
                 key={i}
-                className="reveal group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-8 backdrop-blur transition-colors hover:border-gold/40"
+                className="reveal group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-8 backdrop-blur transition-colors hover:border-amber/60"
                 style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gold-soft text-gold">
@@ -83,7 +83,7 @@ export function Problem() {
           <div className="reveal mt-12 text-center">
             <button
               onClick={() => setShowModal(true)}
-              className="text-sm font-medium text-gold underline-offset-4 hover:underline"
+              className="text-sm font-medium text-gold underline-offset-4 transition-colors hover:text-amber hover:underline"
             >
               Isso tem solução. Fala com a gente →
             </button>

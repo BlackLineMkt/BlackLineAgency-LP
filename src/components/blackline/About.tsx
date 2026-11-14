@@ -40,24 +40,22 @@ const pillars = [
 export function About() {
   return (
     <section className="relative py-24 md:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-surface/40 to-transparent" />
       <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         <div className="text-center">
           <span className="reveal text-xs font-medium uppercase tracking-[0.22em] text-gold">
             Quem somos
           </span>
           <h2 className="reveal mx-auto mt-5 max-w-4xl font-headline text-3xl font-bold leading-tight md:text-5xl">
-            Não somos uma agência.
+            Não somos uma agência genérica.
             <span className="block text-gradient-gold">
-              Somos o ecossistema completo do seu estúdio.
+              Somos o ecossistema de marketing do seu estúdio de tatuagem.
             </span>
           </h2>
           <p className="reveal mx-auto mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            A Black Line nasceu dentro do nicho. Entendemos a cultura, falamos a
-            língua do estúdio e sabemos o que funciona nesse mercado. Enquanto
-            agências genéricas empurram fórmula, a gente constrói infraestrutura
-            completa de crescimento, do primeiro anúncio ao atendimento que
-            fecha agenda.
+            A Black Line nasceu dentro do nicho e trabalha só com tatuadores e estúdios. Entendemos
+            a cultura, falamos a língua do estúdio e sabemos o que funciona nesse mercado. Enquanto
+            agências genéricas empurram fórmula, a gente constrói infraestrutura completa de
+            crescimento, do primeiro anúncio ao atendimento que fecha agenda.
           </p>
         </div>
 
@@ -65,7 +63,7 @@ export function About() {
           {pillars.map((p, i) => (
             <div
               key={p.title}
-              className="reveal group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur transition-colors hover:border-gold/40"
+              className="reveal group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur transition-colors hover:border-amber/60"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gold-soft text-gold">
@@ -93,7 +91,7 @@ export function About() {
         <div className="reveal mt-12 text-center">
           <a
             href="#metodo"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-foreground underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-foreground underline-offset-4 transition-colors hover:text-amber hover:underline"
           >
             Conhecer o método
             <span className="text-gold">→</span>
