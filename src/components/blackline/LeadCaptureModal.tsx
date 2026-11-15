@@ -13,7 +13,9 @@ interface LeadCaptureModalProps {
   planInterest?: string;
 }
 
-type Step = "form" | "success";
+type Step = "form" | "details" | "success";
+
+const SUBMIT_URL = "https://api.web3forms.com/submit";
 
 export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureModalProps) {
   const [step, setStep] = useState<Step>("form");
@@ -21,6 +23,9 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
   const [phone, setPhone] = useState("");
   const [studio, setStudio] = useState("");
   const [city, setCity] = useState("");
+  const [instagram, setInstagram] = useState("");
+  // Gerado no navegador: liga a etapa 2 ao lead salvo na etapa 1.
+  const [leadId] = useState(() => crypto.randomUUID());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   // Área realmente visível (muda com a barra do navegador e o teclado no celular).
@@ -61,6 +66,23 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
     setPhone(formatPhone(e.target.value));
   }
 
+  function postEmail(payload: Record<string, string>) {
+    return fetch(SUBMIT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        from_name: "Black Line Agency - Site",
+        botcheck: "",
+        ...payload,
+      }),
+    }).then(async (res) => {
+      const data = await res.json();
+      if (!data.success) throw new Error("web3forms");
+    });
+  }
+
+  // Etapa 1: salva o lead (nome + WhatsApp) na hora, para não perder quem desistir na etapa 2.
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -75,15 +97,6 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
       return;
     }
 
-    if (studio.trim().length < 2) {
-      setError("Digite o nome do seu estúdio.");
-      return;
-    }
-    if (city.trim().length < 2) {
-      setError("Digite a cidade do seu estúdio.");
-      return;
-    }
-
     setLoading(true);
     try {
       // Grava no CRM e avisa por e-mail em paralelo: se um falhar, o outro ainda garante o lead.
@@ -91,35 +104,23 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
         leadsSupabase
           .from("leads")
           .insert({
+            id: leadId,
             name: name.trim(),
             phone: rawPhone,
             origin: "lp",
             stage: "novo",
             studio_id: LEADS_STUDIO_ID,
-            notes: `Estúdio: ${studio.trim()} | Cidade: ${city.trim()}`,
             ...(planInterest ? { plan_interest: planInterest } : {}),
           })
           .then(({ error: insertError }) => {
             if (insertError) throw insertError;
           }),
-        fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_ACCESS_KEY,
-            subject: "Novo lead - Black Line Agency",
-            from_name: "Black Line Agency - Site",
-            name: name.trim(),
-            phone,
-            estudio: studio.trim(),
-            cidade: city.trim(),
-            plano: planInterest ?? "não informado",
-            origem: source,
-            botcheck: "",
-          }),
-        }).then(async (res) => {
-          const data = await res.json();
-          if (!data.success) throw new Error("web3forms");
+        postEmail({
+          subject: "Novo lead - Black Line Agency",
+          name: name.trim(),
+          phone,
+          plano: planInterest ?? "não informado",
+          origem: source,
         }),
       ]);
 
@@ -135,12 +136,64 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
         plan_name: planInterest ?? "none",
       });
 
-      setStep("success");
+      setStep("details");
     } catch {
       setError("Erro ao enviar. Tente novamente.");
     } finally {
       setLoading(false);
     }
+  }
+
+  // Etapa 2: completa o lead com estúdio, cidade e Instagram.
+  async function handleDetails(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+
+    if (studio.trim().length < 2) {
+      setError("Digite o nome do seu estúdio.");
+      return;
+    }
+    if (city.trim().length < 2) {
+      setError("Digite a cidade do seu estúdio.");
+      return;
+    }
+
+    setLoading(true);
+    const insta = instagram.trim();
+    const [crm, email] = await Promise.allSettled([
+      leadsSupabase
+        .rpc("complete_lead", {
+          p_id: leadId,
+          p_studio: studio.trim(),
+          p_city: city.trim(),
+          p_instagram: insta,
+        })
+        .then(({ error: rpcError }) => {
+          if (rpcError) throw rpcError;
+        }),
+      postEmail({
+        subject: "Lead completou os dados - Black Line Agency",
+        name: name.trim(),
+        phone,
+        estudio: studio.trim(),
+        cidade: city.trim(),
+        instagram: insta || "não informado",
+        plano: planInterest ?? "não informado",
+        origem: source,
+      }),
+    ]);
+    setLoading(false);
+
+    if (crm.status === "rejected" && email.status === "rejected") {
+      setError("Erro ao enviar. Tente novamente.");
+      return;
+    }
+    window.dataLayer?.push({
+      event: "lead_details_completed",
+      lead_source: source,
+      plan_name: planInterest ?? "none",
+    });
+    setStep("success");
   }
 
   // Portal no <body>: ancestrais com transform/backdrop-filter quebram o position:fixed.
@@ -211,6 +264,38 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                 />
               </div>
 
+              {error && (
+                <p className="text-xs font-medium text-red-400">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="group w-full rounded-full bg-gradient-gold px-8 py-4 text-base font-bold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? "Enviando..." : "Quero ser contactado →"}
+              </button>
+
+              <p className="text-center text-xs text-muted-foreground/60">
+                Seus dados são confidenciais. Sem spam.
+              </p>
+            </form>
+          </>
+        ) : step === "details" ? (
+          <>
+            <div className="mb-6 text-center">
+              <span className="text-xs font-medium uppercase tracking-[0.18em] text-gold">
+                Quase lá
+              </span>
+              <h2 className="mt-3 font-headline text-2xl font-bold text-foreground">
+                Conte um pouco sobre seu estúdio
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Seu contato já foi recebido. Estas informações nos ajudam a preparar uma conversa certeira.
+              </p>
+            </div>
+
+            <form onSubmit={handleDetails} className="space-y-4">
               <div>
                 <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   Nome do estúdio
@@ -221,6 +306,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                   onChange={e => setStudio(e.target.value)}
                   placeholder="Ex.: Black Ink Studio"
                   autoComplete="organization"
+                  autoFocus
                   className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
                 />
               </div>
@@ -239,6 +325,20 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                 />
               </div>
 
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Instagram do estúdio (opcional)
+                </label>
+                <input
+                  type="text"
+                  value={instagram}
+                  onChange={e => setInstagram(e.target.value)}
+                  placeholder="@seuestudio"
+                  autoComplete="off"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
+                />
+              </div>
+
               {error && (
                 <p className="text-xs font-medium text-red-400">{error}</p>
               )}
@@ -248,12 +348,8 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                 disabled={loading}
                 className="group w-full rounded-full bg-gradient-gold px-8 py-4 text-base font-bold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? "Enviando..." : "Quero ser contactado →"}
+                {loading ? "Enviando..." : "Finalizar →"}
               </button>
-
-              <p className="text-center text-xs text-muted-foreground/60">
-                Seus dados são confidenciais. Sem spam.
-              </p>
             </form>
           </>
         ) : (
