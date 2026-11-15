@@ -19,6 +19,8 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [studio, setStudio] = useState("");
+  const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   // Área realmente visível (muda com a barra do navegador e o teclado no celular).
@@ -73,6 +75,15 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
       return;
     }
 
+    if (studio.trim().length < 2) {
+      setError("Digite o nome do seu estúdio.");
+      return;
+    }
+    if (city.trim().length < 2) {
+      setError("Digite a cidade do seu estúdio.");
+      return;
+    }
+
     setLoading(true);
     try {
       // Grava no CRM e avisa por e-mail em paralelo: se um falhar, o outro ainda garante o lead.
@@ -85,6 +96,7 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
             origin: "lp",
             stage: "novo",
             studio_id: LEADS_STUDIO_ID,
+            notes: `Estúdio: ${studio.trim()} | Cidade: ${city.trim()}`,
             ...(planInterest ? { plan_interest: planInterest } : {}),
           })
           .then(({ error: insertError }) => {
@@ -99,6 +111,8 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
             from_name: "Black Line Agency - Site",
             name: name.trim(),
             phone,
+            estudio: studio.trim(),
+            cidade: city.trim(),
             plano: planInterest ?? "não informado",
             origem: source,
             botcheck: "",
@@ -193,6 +207,34 @@ export function LeadCaptureModal({ onClose, source, planInterest }: LeadCaptureM
                   value={phone}
                   onChange={handlePhoneChange}
                   placeholder="(11) 99999-9999"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Nome do estúdio
+                </label>
+                <input
+                  type="text"
+                  value={studio}
+                  onChange={e => setStudio(e.target.value)}
+                  placeholder="Ex.: Black Ink Studio"
+                  autoComplete="organization"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Cidade
+                </label>
+                <input
+                  type="text"
+                  value={city}
+                  onChange={e => setCity(e.target.value)}
+                  placeholder="Ex.: Brasília - DF"
+                  autoComplete="address-level2"
                   className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/50 focus:border-amber focus:outline-none transition-colors"
                 />
               </div>
